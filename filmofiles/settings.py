@@ -30,8 +30,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-jillusc-filmofiles-akot92ere2.us2.codeanyapp.com', 'filmofiles.'
-    'herokuapp.com']
+    '8000-jillusc-filmofiles-akot92ere2.us2.codeanyapp.com', 
+    'filmofiles-de31d62f91c0.herokuapp.com']
 
 
 # Application definition
