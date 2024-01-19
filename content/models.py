@@ -18,7 +18,7 @@ class Film(models.Model):
 
 class Review(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    film_title = models.ForeignKey(Film, on_delete=models.CASCADE)
+    film_title = models.CharField(max_length=150)
     slug = models.SlugField(max_length=200, unique=True)
     content = models.TextField()
     rating = models.IntegerField()
@@ -46,4 +46,4 @@ class Comment(models.Model):
         ordering = ["created_on"]
 
     def __str__(self):
-        return f"Comment by {self.author} on {self.review.film_title}"
+        return f"Comment by {self.user_name} on {self.review.film_title}"
