@@ -27,10 +27,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
-    '8000-jillusc-filmofiles-akot92ere2.us2.codeanyapp.com', 
+    '8000-jillusc-filmofiles-akot92ere2.us2.codeanyapp.com',
     'filmofiles-de31d62f91c0.herokuapp.com']
 
 
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'content'
 ]
 
 MIDDLEWARE = [
@@ -90,6 +91,11 @@ WSGI_APPLICATION = 'filmofiles.wsgi.application'
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.codeanyapp.com",
+    "https://*.herokuapp.com"
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
