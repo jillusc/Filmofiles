@@ -45,5 +45,6 @@ class Comment(models.Model):
     class Meta:
         ordering = ["created_on"]
 
-    def __str__(self):
-        return f"Comment by {self.user_name} on {self.review.film_title}"
+
+def __str__(self):
+    return f"{self.user_name} commented on this review:"
