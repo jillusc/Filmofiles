@@ -21,7 +21,7 @@ class Review(models.Model):
     film_title = models.CharField(max_length=150)
     slug = models.SlugField(max_length=200, unique=True)
     content = models.TextField()
-    rating = models.IntegerField(choices=[(i, i) for i in range(0, 11)])
+    rating = models.IntegerField(choices=[(i, i) for i in range(0, 11)], verbose_name='Rating /10')
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     approved = models.BooleanField(default=False)
