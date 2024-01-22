@@ -7,4 +7,5 @@ from .models import Review, Film
 
 class ReviewsList(generic.ListView):
     queryset = Review.objects.all().order_by("-created_on")
-    template_name = "content/reviews_list.html"
+    template_name = "content/index.html"
+    paginate_by = 6
