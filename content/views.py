@@ -1,8 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
-from .models import Review, Film
-
-# Create your views here.
+from .models import Review, Comment, Film
 
 
 class ReviewsList(generic.ListView):
