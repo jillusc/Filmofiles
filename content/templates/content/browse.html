@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Browse Film Reviews</h1>
+    <div class="row">
+        {% for review in object_list %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2>{{ review.film_title }}</h2>
+                    <p>Author: {{ review.author }}</p>
+                    <p>Published on: {{ review.created_on|date }}</p>
+                    <!-- Add more information as needed -->
+                    <a href="{% url 'review_detail' review.pk %}">Read More...</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Pagination controls go here if needed -->
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ review.title }}</h1>
+  <p>Published on {{ review.created_on }}</p>
+  <p>Author: {{ review.author }}</p>
+  <p>{{ review.content }}</p>
+  
+  <h2>Comments ({{ comment_count }})</h2>
+  <ul>
+    {% for comment in comments %}
+      <li>
+        <p>Author: {{ comment.author }}</p>
+        <p>{{ comment.created_on }}</p>
+        <p>{{ comment.text }}</p>
+      </li>
+    {% empty %}
+      <li>No comments yet.</li>
+    {% endfor %}
+  </ul>
+  
+  <h2>Add a Comment</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <button type="submit">Submit Comment</button>
+  </form>
+  
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}
