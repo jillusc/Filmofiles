@@ -12,7 +12,7 @@ class CommentForm(forms.ModelForm):
         super(CommentForm, self).__init__(*args, **kwargs)
         if user:
             self.user = user
-          
+
     def save(self, commit=True):
         comment = super(CommentForm, self).save(commit=False)
         comment.user_name = self.user
