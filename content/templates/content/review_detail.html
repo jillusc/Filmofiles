@@ -10,9 +10,9 @@
   <ul>
     {% for comment in comments %}
       <li>
-        <p>Author: {{ comment.author }}</p>
+        <p>User: {{ comment.user_name }}</p>
         <p>{{ comment.created_on }}</p>
-        <p>{{ comment.text }}</p>
+        <p>{{ comment.content }}</p>
       </li>
     {% empty %}
       <li>No comments yet.</li>
@@ -22,8 +22,9 @@
   <h2>Add a Comment</h2>
   <form method="post">
     {% csrf_token %}
-    {{ comment_form.as_p }}
-    <button type="submit">Submit Comment</button>
+    {{ comment_form.user_name }}
+    {{ comment_form.content }}    
+    <button type="submit">Submit</button>
   </form>
   
   {% if messages %}

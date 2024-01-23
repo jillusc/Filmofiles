@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
+from django.contrib import messages
 from .models import Review, Comment, Film
+from .forms import CommentForm
 
 
 def home(request):
@@ -21,11 +23,11 @@ def review_detail(request, slug):
     comment_count = comments.count()
 
     if request.method == "POST":
-        comment_form = CommentForm(request.POST)
+        comment_form = CommentForm(request.POST, user=request.user)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
-            comment.author = request.user
             comment.review = review
+            comment.user_name = request.user
             comment.save()
             messages.success(request, 'Comment submitted.')
 

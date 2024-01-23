@@ -1,6 +1,4 @@
-{% load static %}
-
-{% url 'home' as home_url %}
+{% load static %} {% url 'home' as home_url %}
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
@@ -62,6 +60,7 @@
                 >Home</a
               >
             </li>
+            <li><a href="{% url 'browse' 1 %}">Browse</a></li>
           </ul>
           <span class="navbar-text text-muted">film review community</span>
         </div>
