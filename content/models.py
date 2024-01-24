@@ -18,8 +18,7 @@ class Film(models.Model):
 
 class Review(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    film = models.ForeignKey(
-        Film, on_delete=models.CASCADE, default=1)
+    film = models.ForeignKey(Film, on_delete=models.CASCADE)
     year = models.PositiveIntegerField()
     slug = models.SlugField(max_length=200, unique=True,
                             verbose_name='Tagline')
@@ -35,7 +34,7 @@ class Review(models.Model):
         ordering = ["-created_on"]
 
     def __str__(self):
-        return f"{self.film_title} | a review by {self.author}"
+        return f"{self.film.film_title} | a review by {self.author}"
 
 
 class Comment(models.Model):

@@ -100,8 +100,7 @@ def submit_review(request):
             review = form.save(commit=False)
             review.film = film
             review.save()
-
-            return redirect('success_page')
+            request.session['review_submitted'] = True
+            return redirect('browse')
     else:
-        form = ReviewForm()
-    return render(request, 'create_review.html', {'form': form})
+        return redirect('success_page')

@@ -1,8 +1,7 @@
 from django.contrib import admin
-from .models import Film, Review, Comment
 from django_summernote.admin import SummernoteModelAdmin
-
-# Register your models here.
+from .models import Film, Review, Comment
+from .forms import ReviewForm
 
 
 @admin.register(Film)
@@ -14,12 +13,33 @@ class FilmAdmin(admin.ModelAdmin):
 
 @admin.register(Review)
 class ReviewAdmin(SummernoteModelAdmin):
-    list_display = ('film_title', 'slug', 'status', 'created_on',
-                    'updated_on')
-    search_fields = ['film_title']
+    list_display = ('film_title', 'slug', 'status', 'created_on', 'updated_on')
+    search_fields = ['film__film_title']
     list_filter = ('status',)
     ordering = ('-created_on',)
     summernote_fields = ('content',)
+    form = ReviewForm
+
+    def save_model(self, request, obj, form, change):
+        # Check if the film already exists or create a new one
+        film_title = form.cleaned_data.get('film_title')
+        director = form.cleaned_data.get('director')
+        year = form.cleaned_data.get('year')
+        genre = form.cleaned_data.get('genre')
+
+        film, created = Film.objects.get_or_create(
+            film_title=film_title,
+            director=director,
+            year=year,
+            genre=genre
+        )
+
+        obj.film = film
+
+        if not obj.pk:
+            obj.author = request.user
+
+        super().save_model(request, obj, form, change)
 
     def film_title(self, obj):
         return obj.film.film_title
