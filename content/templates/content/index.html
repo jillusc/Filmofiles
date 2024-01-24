@@ -1,48 +1,77 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+{% block title %}Film Review Hub | Home{% endblock %}
+{% block content %}
 
-<!-- index.html content starts here -->
-<div class="container-fluid">
-  <div class="row">
-    <!-- Blog Entries Column -->
-    <div class="col-12 mt-3 left">
-      <div class="row">
-        {% for review in object_list %}
-        <div class="col-md-4">
-          <div class="card mb-4">
-            <div class="card-body">
-              <div class="image-container">
-                <div class="image-flash">
-                  <p class="author">Author: {{ review.author }}</p>
-                </div>
-              </div>
-              <a href="#" class="post-link">
-                <h2 class="card-title">{{ review.film_title }}</h2>
-              </a>
-
-              <hr />
-              <p class="card-text text-muted h6">{{ review.created_on}}</p>
+<section>
+    <div class="container px-2 py-3">
+        <div class="row flex-md-row-reverse py-3 m-0">
+            <div class="col-md-7 col-lg-5 p-0 pl-md-5 align-self-center">
+                <img src="" alt="">
             </div>
-          </div>
+            <div class="col-md-5 col-lg-7 hero-text-outer text-center">
+                <h1 class="mt-4 mb-2 hero-text">FILMOFILES</h1>
+                <div class="lead mt-4">
+                    Honest. Insightful. Passionate.
+                </div>
+            </div>
         </div>
-        {% if forloop.counter|divisibleby:3 %}
-      </div>
-      <div class="row">{% endif %} {% endfor %}</div>
     </div>
-  </div>
-  {% if is_paginated %}
-  <nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
-      {% if page_obj.has_next %}
-      <li>
-        <a href="?page={{ page_obj.next_page_number }}" class="page-link">
-          NEXT &raquo;</a
-        >
-      </li>
-      {% endif %}
-    </ul>
-  </nav>
-  {% endif %}
-</div>
+</section>
+<section class="container px-0 py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="my-3 text-center">heading</h2>
+                <p class="text-center lead">
+                    Text text text.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container px-0 py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="my-3 text-center">Submit a review</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form method="post" action="{% url 'submit_review' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="{{ form.film_title.id_for_label }}">Film Title</label>
+                        {{ form.film_title }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.director.id_for_label }}">Director</label>
+                        {{ form.director }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.year.id_for_label }}">Release Year</label>
+                        {{ form.year }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.genre.id_for_label }}">Genre</label>
+                        {{ form.genre }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.content.id_for_label }}">Review Content</label>
+                        {{ form.content }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.slug.id_for_label }}">Tagline</label>
+                        {{ form.slug }}
+                        <small class="form-text text-muted">Summarise your review in one line...</small>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
-<!-- index.html content ends here -->
 {% endblock %}

@@ -6,4 +6,6 @@ urlpatterns = [
     path('browse/page/<int:page>/', views.ReviewsList.as_view(),
          name='browse'),
     path('review/<slug:slug>/', views.review_detail, name='review_detail'),
+    path('submit-review/', views.submit_review, name='submit_review'),
+
 ]

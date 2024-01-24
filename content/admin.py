@@ -21,6 +21,9 @@ class ReviewAdmin(SummernoteModelAdmin):
     ordering = ('-created_on',)
     summernote_fields = ('content',)
 
+    def film_title(self, obj):
+        return obj.film.film_title
+
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
