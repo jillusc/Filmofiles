@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from .models import Review, Comment, Film
 from .forms import ReviewForm, CommentForm
-from django.contrib.auth.decorators import login_required
 
 
 def home(request):

@@ -1,15 +1,16 @@
 import datetime
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 from .models import Review, Film, Comment
 
 current_year = datetime.date.today().year
 
 
 class ReviewForm(forms.ModelForm):
-    film_title = forms.CharField(max_length=150)
+    film_title = forms.CharField(max_length=100)
     director = forms.CharField(max_length=100)
     year = forms.IntegerField(min_value=1888, max_value=current_year)
-    genre = forms.CharField(max_length=50)
+    genre = forms.CharField(max_length=100)
     content = forms.CharField(widget=forms.Textarea(
         attrs={'placeholder': 'Share your thoughts on this film'}))
     slug = forms.CharField(max_length=50, required=False)
