@@ -6,11 +6,15 @@ def signup_view(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = User.objects.create_user(username=username,
+                                            password=password)
             login(request, user)
             return redirect('home')
     else:
         form = SignUpForm()
+
     return render(request, 'core/sign_up.html', {'form': form})
 
 
