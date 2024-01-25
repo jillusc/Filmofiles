@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.contrib import messages
 from .models import Review, Comment, Film
 from .forms import ReviewForm, CommentForm
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -10,10 +11,25 @@ def home(request):
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('home')
+            film_title = form.cleaned_data.get('film_title')
+            director = form.cleaned_data.get('director')
+            year = form.cleaned_data.get('year')
+            genre = form.cleaned_data.get('genre')
+
+            film, created = Film.objects.get_or_create(
+                film_title=film_title,
+                director=director,
+                year=year,
+                genre=genre
+            )
+            review = form.save(commit=False)
+            review.film = film
+            review.save()
+
+            return redirect('browse')
     else:
         form = ReviewForm()
+
     return render(request, "content/index.html", {'form': form})
 
 
@@ -23,6 +39,7 @@ class ReviewsList(generic.ListView):
     paginate_by = 6
 
 
+@login_required
 def review_detail(request, slug):
     """ Display an individual film review and associated comments. """
     review = get_object_or_404(Review, slug=slug)
@@ -30,37 +47,17 @@ def review_detail(request, slug):
     comment_count = comments.count()
 
     if request.method == "POST":
-        comment_form = CommentForm(request.POST, user=request.user)
+        comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
-            film_title = comment_form.cleaned_data['film_title']
-            genre = comment_form.cleaned_data['genre']
-            year = comment_form.cleaned_data['year']
-            director = comment_form.cleaned_data['director']
-
-            existing_film = Film.objects.filter(
-                film_title=film_title,
-                genre=genre,
-                year=year,
-                director=director
-            ).first()
-
-            if existing_film:
-                comment.film = existing_film
-            else:
-                new_film = Film.objects.create(
-                    film_title=film_title,
-                    genre=genre,
-                    year=year,
-                    director=director
-                )
-                comment.film = new_film
-
             comment.user_name = request.user
+            comment.review = review
             comment.save()
             messages.success(request, 'Comment submitted.')
+            return redirect('review_detail', slug=review.slug)
 
-    comment_form = CommentForm()
+    else:
+        comment_form = CommentForm()
 
     return render(
         request,
@@ -68,39 +65,5 @@ def review_detail(request, slug):
         {
             "review": review,
             "comments": comments,
-            "comment_count": comment_count,
-            "comment_form": comment_form,
-        },
+        }
     )
-
-
-def submit_review(request):
-    if request.method == 'POST':
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            film_title = form.cleaned_data.get('film_title')
-            genre = form.cleaned_data.get('genre')
-            year = form.cleaned_data.get('year')
-            director = form.cleaned_data.get('director')
-
-            existing_film = Film.objects.filter(
-                film_title=film_title,
-                director=director, year=year).first()
-
-            if existing_film:
-                film = existing_film
-            else:
-                film = Film.objects.create(
-                    film_title=film_title,
-                    director=director,
-                    year=year,
-                    genre=genre,
-                )
-
-            review = form.save(commit=False)
-            review.film = film
-            review.save()
-            request.session['review_submitted'] = True
-            return redirect('browse')
-    else:
-        return redirect('success_page')

@@ -22,7 +22,6 @@
 <h2>Add a Comment</h2>
 <form method="post">
     {% csrf_token %}
-    {{ comment_form.user_name }}
     {{ comment_form.content }}
     <button type="submit">Submit</button>
 </form>

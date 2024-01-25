@@ -38,7 +38,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <form method="post" action="">
+                <form method="post" action="{% url 'home' %}">
                     {% csrf_token %}
                     <div class="form-group">
                         <label for="{{ form.film_title.id_for_label }}">Film title</label>

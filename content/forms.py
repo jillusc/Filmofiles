@@ -49,14 +49,13 @@ class CommentForm(forms.ModelForm):
         fields = ('content',)
 
     def __init__(self, *args, **kwargs):
-        user = kwargs.pop('user', None)
+        self.user = kwargs.pop('user', None)
         super(CommentForm, self).__init__(*args, **kwargs)
-        if user:
-            self.user = user
 
     def save(self, commit=True):
         comment = super(CommentForm, self).save(commit=False)
-        comment.user_name = self.user
+        if self.user:
+            comment.user_name = self.user
         if commit:
             comment.save()
         return comment
