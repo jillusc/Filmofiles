@@ -19,9 +19,9 @@ class ReviewAdmin(SummernoteModelAdmin):
     ordering = ('-created_on',)
     summernote_fields = ('content',)
     form = ReviewForm
+    actions = ['approve_reviews']
 
     def save_model(self, request, obj, form, change):
-        # Check if the film already exists or create a new one
         film_title = form.cleaned_data.get('film_title')
         director = form.cleaned_data.get('director')
         year = form.cleaned_data.get('year')
@@ -43,6 +43,10 @@ class ReviewAdmin(SummernoteModelAdmin):
 
     def film_title(self, obj):
         return obj.film.film_title
+
+    @admin.action(description="Mark selected reviews as approved")
+    def approve_reviews(self, request, queryset):
+        queryset.update(approved=True, status=1)
 
 
 @admin.register(Comment)

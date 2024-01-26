@@ -19,7 +19,7 @@ class Film(models.Model):
 class Review(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     film = models.ForeignKey(Film, on_delete=models.CASCADE)
-    slug = models.SlugField(max_length=200, unique=True,
+    slug = models.SlugField(max_length=50, unique=True,
                             verbose_name='Tagline')
     content = models.TextField()
     rating = models.IntegerField(choices=[(i, i) for i in range(0, 11)],

@@ -25,9 +25,13 @@ def home(request):
             )
             review = form.save(commit=False)
             review.film = film
+            review.author = request.user
             review.save()
 
-            return redirect('browse')
+            return redirect('browse', page=1)
+        else:
+            print("Form errors:", form.errors)
+            return render(request, "content/index.html", {'form': form})
     else:
         form = ReviewForm()
 
@@ -35,6 +39,7 @@ def home(request):
 
 
 class ReviewsList(generic.ListView):
+    model = Review
     queryset = Review.objects.all().order_by("-created_on")
     template_name = "content/browse.html"
     paginate_by = 6

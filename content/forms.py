@@ -22,6 +22,14 @@ class ReviewForm(forms.ModelForm):
         fields = ['film_title', 'director', 'year',
                   'genre', 'content', 'slug', 'rating']
 
+    def clean_slug(self):
+        slug = self.cleaned_data['slug']
+        new_slug = slug.replace(' ', '-')
+        if new_slug and Review.objects.filter(slug=new_slug).exists():
+            raise forms.ValidationError(
+                "This tagline already exists. Please write something different.")
+        return new_slug
+
     def save(self, commit=True):
         review = super().save(commit=False)
 
