@@ -22,8 +22,8 @@
 <h2>Add a Comment</h2>
 <form method="post">
     {% csrf_token %}
-    {{ comment_form.content }}
-    <button type="submit">Submit</button>
+    {{ comment_form.as_p }}
+    <button type="submit">SUBMIT</button>
 </form>
 
 {% if messages %}

@@ -51,6 +51,7 @@ def review_detail(request, slug):
     review = get_object_or_404(Review, slug=slug)
     comments = review.comments.all().order_by("-created_on")
     comment_count = comments.count()
+    comment_form = CommentForm()
 
     if request.method == "POST":
         comment_form = CommentForm(request.POST)
@@ -71,5 +72,6 @@ def review_detail(request, slug):
         {
             "review": review,
             "comments": comments,
+            "comment_form": comment_form,
         }
     )

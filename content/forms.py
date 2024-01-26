@@ -27,7 +27,8 @@ class ReviewForm(forms.ModelForm):
         new_slug = slug.replace(' ', '-')
         if new_slug and Review.objects.filter(slug=new_slug).exists():
             raise forms.ValidationError(
-                "This tagline already exists. Please write something different.")
+                "This tagline already exists. Please write something "
+                "different.")
         return new_slug
 
     def save(self, commit=True):
@@ -53,6 +54,10 @@ class ReviewForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
+    content = forms.CharField(
+        widget=forms.Textarea(attrs={'placeholder': "Share your thoughts "
+                                     "on this review..."}))
+
     class Meta:
         model = Comment
         fields = ('content',)
