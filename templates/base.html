@@ -68,8 +68,12 @@
         Account
     </a>
     <ul class="dropdown-menu" aria-labelledby="accountDropdown">
+        {% if user.is_authenticated %}
+        <li><a class="dropdown-item" href="{% url 'logout' %}">Log Out</a></li>
+        {% else %}
         <li><a class="dropdown-item" href="{% url 'signup' %}">Sign Up</a></li>
         <li><a class="dropdown-item" href="{% url 'login' %}">Log In</a></li>
+        {% endif %}
     </ul>
 </li>
 </ul>

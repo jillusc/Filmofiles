@@ -15,7 +15,7 @@ class FilmAdmin(admin.ModelAdmin):
 class ReviewAdmin(SummernoteModelAdmin):
     list_display = ('film_title', 'slug', 'status', 'created_on', 'updated_on')
     search_fields = ['film__film_title']
-    list_filter = ('status',)
+    list_filter = ('status', 'author')
     ordering = ('-created_on',)
     summernote_fields = ('content',)
     form = ReviewForm
