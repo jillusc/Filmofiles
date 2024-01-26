@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block content %}
+<h1>My Profile</h1>
+<section>
+  <h2>My Reviews</h2>
+  {% for review in reviews %}
+  <div>
+    <h3>{{ review.film_title }}</h3>
+    <p>{{ review.content }}</p>
+    <a href="{% url 'edit_review' review.id %}">Edit</a>
+    <a href="{% url 'delete_review' review.id %}">Delete</a>
+  </div>
+  {% endfor %}
+</section>
+
+<section>
+  <h2>My Comments</h2>
+  {% for comment in comments %}
+  <div>
+    <p>{{ comment.content }}</p>
+    <a href="{% url 'edit_comment' comment.id %}">Edit</a>
+    <a href="{% url 'delete_comment' comment.id %}">Delete</a>
+  </div>
+  {% endfor %}
+</section>
+
+<section>
+    <h2>My Account</h2>
+  <a href="{% url 'delete_account' %}">Delete My Account</a>
+</section>
+{% endblock %}
