@@ -11,4 +11,9 @@ urlpatterns = [
     path('edit_review/<int:review_id>/', views.edit_review, name='edit_review'),
     path('delete_review/<int:review_id>/',
          views.delete_review, name='delete_review'),
+    path('edit_comment/<int:comment_id>/',
+         views.edit_comment, name='edit_comment'),
+    path('delete_comment/<int:comment_id>/',
+         views.delete_comment, name='delete_comment'),
+
 ]
