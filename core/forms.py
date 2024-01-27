@@ -50,3 +50,11 @@ class SignUpForm(forms.Form):
 
 class LogInForm(AuthenticationForm):
     pass
+
+
+class EditReviewForm(forms.Form):
+    content = forms.CharField(widget=forms.Textarea, required=True)
+
+
+class EditCommentForm(forms.Form):
+    content = forms.CharField(widget=forms.Textarea, required=True)

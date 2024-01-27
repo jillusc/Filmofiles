@@ -2,8 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .forms import SignUpForm, LogInForm
-from content.forms import ReviewForm, CommentForm
+from .forms import SignUpForm, LogInForm, EditReviewForm, EditCommentForm
 from content.models import Review, Comment
 
 
@@ -45,15 +44,16 @@ def my_profile(request):
 
 @login_required
 def edit_review(request, review_id):
-    review = get_object_or_404(Review, id=review_id)
+    review = get_object_or_404(Review, id=review_id, author=request.user)
 
     if request.method == 'POST':
-        form = ReviewForm(request.POST, instance=review)
+        form = EditReviewForm(request.POST)
         if form.is_valid():
-            form.save()
+            review.content = form.cleaned_data['content']
+            review.save()
             return redirect('my_profile')
     else:
-        form = ReviewForm(instance=review)
+        form = EditReviewForm(initial={'content': review.content})
 
     return render(request, 'core/edit_review.html', {'form': form})
 
@@ -67,15 +67,16 @@ def delete_review(request, review_id):
 
 @login_required
 def edit_comment(request, comment_id):
-    comment = get_object_or_404(Comment, id=comment_id)
+    comment = get_object_or_404(Comment, id=comment_id, user_name=request.user)
 
     if request.method == 'POST':
-        form = CommentForm(request.POST, instance=comment)
+        form = EditCommentForm(request.POST)
         if form.is_valid():
-            form.save()
+            comment.content = form.cleaned_data['content']
+            comment.save()
             return redirect('my_profile')
     else:
-        form = CommentForm(instance=comment)
+        form = EditCommentForm(initial={'content': comment.content})
 
     return render(request, 'core/edit_comment.html', {'form': form})
 
