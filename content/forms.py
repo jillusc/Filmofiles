@@ -13,7 +13,10 @@ class ReviewForm(forms.ModelForm):
     genre = forms.CharField(max_length=100)
     content = forms.CharField(widget=forms.Textarea(
         attrs={'placeholder': 'Share your thoughts on this film'}))
-    slug = forms.CharField(max_length=50, required=False)
+    slug = forms.CharField(
+        max_length=50, required=False,
+        widget=forms.TextInput(attrs={'placeholder':
+                                      'Summarise your review in one line...'}))
     rating = forms.IntegerField(
         min_value=0, max_value=10, required=True, label='Rating /10')
 
