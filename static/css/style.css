@@ -1,21 +1,91 @@
 /* Custom Styles */
 
 body {
-    background-color: #f8f8f8;
-    color: var(--secondary-color);
-    font-family: 'Roboto', sans-serif;
+    background-color: #002e2e;
+    color: #EDEDED;
 }
 
 /* Typography */
 :root {
-    --primary-color: #007bff;
-    --secondary-color: #6c757d;
+    --primary-color: #FF3300;
+    --secondary-color: #6495ED;
 }
 
-h1,
-h2 {
+h1, h2, h3, h4 {
     color: var(--primary-color);
+    font-family: 'Montserrat', sans-serif;
+    background-color: #333;
+    text-transform: uppercase;
+    display: inline;
+    padding: 0em 0.15em;
 }
+
+p {
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+/* Navigation */
+.navbar {
+    background-color: #333;
+        border-bottom: 1px solid #6495ED
+}
+
+.navbar-brand {
+    font-family: 'Workbench', sans-serif;
+    font-size: 34px;
+    letter-spacing: 1.5px;
+    color: #EDEDED;
+        margin-right: 20px;
+        margin-left: 10px;
+}
+
+.navbar-brand:hover {
+    color: #EDEDED;
+}
+
+.navbar-nav .nav-link,
+.navbar-text {
+    font-family: 'Montserrat', sans-serif;
+    color: #EDEDED;
+    margin-right: 20px;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    background-color: #222;
+    color: #FFF;
+}
+
+.navbar-toggler-icon {
+    background-color: #EDEDED;
+}
+
+.navbar-toggler {
+    color: #EDEDED;
+}
+
+.dropdown-menu {
+    background-color: #333;
+    color: #EDEDED;
+    border: none;
+}
+
+.dropdown-menu a {
+    color: #EDEDED;
+    padding: 8px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu a.active {
+    color: #FFF;
+}
+
+.dropdown-menu a:hover {
+    background-color: #222;
+    color: #FFF;
+}
+
 
 /* Sections */
 section {
@@ -26,27 +96,52 @@ section {
 .form-group label {
     font-weight: normal;
     text-align: center;
+    color: #EDEDED;
 }
 
+/* Input Fields */
 input[type="text"],
 input[type="number"],
 input[type="password"],
 textarea,
 select {
     border-radius: 0.25rem;
-    border: 1px solid #ced4da;
+    border: 1px solid #222;
     font-weight: normal;
     width: 90%;
+    background-color: #FFF;
+    color: #333;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
 }
 
 /* Buttons */
 button.btn-primary {
     background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    font-weight: bold;
+    border: 1px solid #EDEDED;
+    color: #EDEDED;
 }
 
 button.btn-primary:hover {
     background-color: darken(var(--primary-color), 10%);
     border-color: darken(var(--primary-color), 10%);
+    color: #FFF;
+}
+
+.footer {
+    background-color: #333;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: #EDEDED;
+    border-top: 1px solid #6495ED;
+}
+
+.footer p {
+    margin-bottom: 0;
+}
+
+.footer i {
+    color: #EDEDED;
+    font-size: 2rem;
+    margin: 6px 4px;
 }

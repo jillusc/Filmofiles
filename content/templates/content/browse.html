@@ -1,12 +1,16 @@
 {% extends "base.html" %} {% block content %}
 <div class="container">
-  <h1>Browse Film Reviews</h1>
+  <div class="row">
+    <div class="col-12 text-left">
+      <h3 class="mt-4 mb-2">Browse film reviews</h3>
+    </div>
+  </div>
   <div class="row">
     {% for review in object_list %}
-    <div class="col-md-4">
+    <div class="col-md-4 mt-4 mb-2">
       <div class="card mb-4">
         <div class="card-body">
-          <h2>{{ review.film.film_title }}</h2>
+          <h4>{{ review.film.film_title }}</h4>
           <p>Tagline: {{ review.slug }}</p>
           <p>Author: {{ review.author }}</p>
           <p>Published on: {{ review.created_on|date }}</p>
