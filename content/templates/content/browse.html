@@ -1,24 +1,36 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 <div class="container">
-  <div class="row">
-    <div class="col-12 text-left">
-      <h3 class="mt-4 mb-2">Browse film reviews</h3>
-    </div>
-  </div>
-  <div class="row">
-    {% for review in object_list %}
-    <div class="col-md-4 mt-4 mb-2">
-      <div class="card mb-4">
-        <div class="card-body">
-          <h4>{{ review.film.film_title }}</h4>
-          <p>Tagline: {{ review.slug }}</p>
-          <p>Author: {{ review.author }}</p>
-          <p>Published on: {{ review.created_on|date }}</p>
-          <a href="{% url 'review_detail' review.slug %}">READ</a>
+    <div class="row">
+        <div class="col-12 text-center mt-4 mb-2">
+            <h3>Browse film reviews</h3>
         </div>
-      </div>
     </div>
-    {% endfor %}
-  </div>
+
+    <div class="row">
+        {% for review in object_list %}
+        <div class="col-md-4 mt-4 mb-4">
+            <div class="card mb-4">
+                <div class="image-container">
+                    {% if "placeholder" in review.featured_image.url %}
+                    <img class="card-img-top" src="{% static 'images/popcorn-898154_1280.png' %}" alt="placeholder image">
+                    {% else %}
+                    <img class="card-img-top" src="{{ review.featured_image.url }}" alt="{{ review.film.film_title }}">
+                    {% endif %}
+                    <div class="image-flash"></div>
+                </div>
+                <div class="card-body">
+                    <h4>{{ review.film.film_title }}</h4>
+                    <p>Tagline: {{ review.slug }}</p>
+                    <p>Author: {{ review.author }}</p>
+                    <p>Published on: {{ review.created_on|date }}</p>
+                    <a href="{% url 'review_detail' review.slug %}">READ</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
+

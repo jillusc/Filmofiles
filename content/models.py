@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
-# Create your models here.
 
 STATUS = (
     (0, 'Pending'),
@@ -28,6 +28,7 @@ class Review(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     approved = models.BooleanField(default=False)
     updated_on = models.DateTimeField(auto_now=True)
+    featured_image = CloudinaryField('image', default='placeholder')
 
     class Meta:
         ordering = ["-created_on"]
