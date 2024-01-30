@@ -1,3 +1,6 @@
+from .forms import CommentForm
+from .models import Review
+from django.shortcuts import get_object_or_404, redirect, render
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.contrib import messages
@@ -45,9 +48,7 @@ class ReviewsList(generic.ListView):
     paginate_by = 6
 
 
-@login_required
 def review_detail(request, slug):
-    """ Display an individual film review and associated comments. """
     review = get_object_or_404(Review, slug=slug)
     comments = review.comments.all().order_by("-created_on")
     comment_count = comments.count()
@@ -62,9 +63,6 @@ def review_detail(request, slug):
             comment.save()
             messages.success(request, 'Comment submitted.')
             return redirect('review_detail', slug=review.slug)
-
-    else:
-        comment_form = CommentForm()
 
     return render(
         request,

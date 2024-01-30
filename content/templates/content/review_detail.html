@@ -1,36 +1,50 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-<h1>{{ review.film_title }}</h1>
-<p>Published on {{ review.created_on }}</p>
-<p>Author: {{ review.author }}</p>
-<p>{{ review.content }}</p>
-
-<h2>Comments ({{ comment_count }})</h2>
-<ul>
-    {% for comment in comments %}
-    <li>
-        <p>User: {{ comment.user_name }}</p>
-        <p>{{ comment.created_on }}</p>
-        <p>{{ comment.content }}</p>
-    </li>
-    {% empty %}
-    <li>No comments yet.</li>
-    {% endfor %}
-</ul>
-
-<h2>Add a Comment</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ comment_form.as_p }}
-    <button type="submit">SUBMIT</button>
-</form>
-
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-        {% endfor %}
-</ul>
-{% endif %}
+<div class="container">
+    
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+            <div class="image-container">
+                {% if "placeholder" in review.featured_image.url %}
+                <img class="img-fluid" src="{% static 'images/popcorn-898154_1280.png' %}" alt="placeholder image">
+                {% else %}
+                <img class="img-fluid" src="{{ review.featured_image.url }}" alt="{{ review.film.film_title }}">
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h3>{{ review.film.film_title }} Review</h3>
+            <p><strong>Tagline:</strong> {{ review.slug }}</p>
+            <p><strong>Author:</strong> {{ review.author }}</p>
+            <p><strong>Published on:</strong> {{ review.created_on|date:"Y-m-d" }}</p>
+            <hr>
+            <p>{{ review.content }}</p>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-8 offset-md-2">
+            <div class="comments-section">
+                <h4>Comments</h4>
+                <div class="comment-box">
+                    {% if user.is_authenticated %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <textarea name="comment" placeholder="Leave a comment..."></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
+                    {% else %}
+                    <textarea name="comment" placeholder="Leave a comment..." disabled></textarea>
+                    <p>You need to <a href="{% url 'login' %}">log in</a> to leave a comment. If you're not signed up
+                        yet, <a href="{% url 'signup' %}">register here</a>.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
