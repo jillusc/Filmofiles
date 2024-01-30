@@ -1,20 +1,22 @@
 /* Custom Styles */
-
 body {
     background-color: #002e2e;
     color: #EDEDED;
     font-family: 'Helvetica Neue', sans-serif;
 }
 
-/* Typography */
 :root {
     --primary-color: #FF3300;
     --accent-color: #6495ED;
 }
 
-h1, h2, h3, h4 {
-    color: var(--primary-color);
+/* Typography */
+h1,
+h2,
+h3,
+h4 {
     font-family: 'Montserrat', sans-serif;
+    color: var(--primary-color);
     background-color: #333;
     text-transform: uppercase;
     display: inline;
@@ -22,13 +24,13 @@ h1, h2, h3, h4 {
 }
 
 .not-capitalized {
-    text-decoration: none;
+    text-transform: none;
 }
 
 /* Navigation */
 .navbar {
     background-color: #333;
-        border-bottom: 1px solid #6495ED
+    border-bottom: 1px solid #6495ED;
 }
 
 .navbar-brand {
@@ -36,8 +38,8 @@ h1, h2, h3, h4 {
     font-size: 34px;
     letter-spacing: 1.5px;
     color: #EDEDED;
-        margin-right: 20px;
-        margin-left: 10px;
+    margin-right: 20px;
+    margin-left: 10px;
 }
 
 .navbar-brand:hover {
@@ -56,12 +58,10 @@ h1, h2, h3, h4 {
     color: #FFF;
 }
 
-.navbar-toggler-icon {
-    background-color: #EDEDED;
-}
-
+.navbar-toggler-icon,
 .navbar-toggler {
     color: #EDEDED;
+    background-color: #333;
 }
 
 .dropdown-menu {
@@ -86,7 +86,6 @@ h1, h2, h3, h4 {
     color: #FFF;
 }
 
-
 /* Sections */
 section {
     padding: 20px 0;
@@ -94,6 +93,7 @@ section {
 
 /* Forms */
 .form-group label {
+    font-family: 'Helvetica Neue', sans-serif;
     font-weight: normal;
     text-align: center;
     color: #EDEDED;
@@ -107,6 +107,7 @@ textarea,
 select {
     border-radius: 0.25rem;
     border: 1px solid #222;
+        font-family: 'Helvetica Neue', sans-serif;
     font-weight: normal;
     width: 90%;
     background-color: #FFF;
@@ -124,15 +125,16 @@ button.btn-primary {
 
 button.btn-primary:hover {
     background-color: var(--accent-color);
-        border: 1px solid #EDEDED;
+    border: 1px solid #EDEDED;
     color: #EDEDED;
 }
 
-/* Card Styling */
+/* Cards */
 .card {
+    font-family: 'Helvetica Neue', sans-serif;
+    color: #EDEDED;
     background-color: #333;
     border: none;
-    color: #EDEDED;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 300px;
@@ -142,14 +144,8 @@ button.btn-primary:hover {
     padding: 20px;
 }
 
-.card h4 {
-    color: var(--primary-color);
-        text-transform: capitalize;
-
-}
-
 .card p {
-    font-family: 'Helvetica Neue', sans-serif !important;
+    font-family: 'Helvetica Neue', sans-serif;
     margin-bottom: 6px;
 }
 
@@ -168,7 +164,7 @@ button.btn-primary:hover {
 
 .card a:hover {
     background-color: var(--accent-color);
-    color: #333;
+    color: #FFF;
 }
 
 .image-container {
@@ -188,6 +184,37 @@ button.btn-primary:hover {
     height: auto;
 }
 
+/* Pagination */
+.pagination {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.pagination .page-item {
+    display: inline;
+    margin-right: 10px;
+}
+
+.pagination .page-link {
+    color: var(--primary-color);
+    background-color: transparent;
+    border: none;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.pagination .page-link:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+.pagination .page-item.active .page-link {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #333;
+}
+
+/* Footer */
 .footer {
     background-color: #333;
     font-size: 12px;
@@ -202,6 +229,6 @@ button.btn-primary:hover {
 
 .footer i {
     color: #EDEDED;
-    font-size: 2rem;
-    margin: 6px 6px;
+    font-size: 1.5rem;
+    margin: 5px 5px;
 }
