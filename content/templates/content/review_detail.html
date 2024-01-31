@@ -2,8 +2,7 @@
 {% load static %}
 {% block content %}
 <div class="container">
-    
-    <div class="row">
+        <div class="row">
         <div class="col-md-3">
         </div>
         <div class="col-md-3">
@@ -19,7 +18,7 @@
             <h3 class="not-capitalized">Review: {{ review.film.film_title }} </h3>
             <p><strong>Tagline:</strong> {{ review.slug }}</p>
             <p><strong>Author:</strong> {{ review.author }}</p>
-            <p><strong>Published on:</strong> {{ review.created_on|date:"D-m-y" }}</p>
+            <p><strong>Date:</strong> {{ review.created_on}}</p>
             <hr>
             <p>{{ review.content }}</p>
         </div>

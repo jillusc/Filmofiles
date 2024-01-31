@@ -5,9 +5,10 @@
     <h2>My Reviews</h2>
     {% for review in reviews %}
     <div>
-        <h4>{{ review.film.film_title }}</h3>
-            <p>Tagline: {{ review.slug }}</p>
-            <p>{{ review.content }}</p>
+        <h4 class="not-capitalized">{{ review.film.film_title }}</h4>
+            <p><strong>Tagline: </strong>{{ review.slug }}</p>
+            <p><strong>Created: </strong>{{ review.created_on }}</p>
+            <p>"{{ review.content }}"</p>
             <a href="{% url 'edit_review' review_id=review.id %}">Edit</a>
             <a href="{% url 'delete_review' review_id=review.id %}">Delete</a>
     </div>
@@ -18,9 +19,10 @@
     <h2>My Comments</h2>
     {% for comment in comments %}
     <div>
-        <p>{{ comment.content }}</p>
-        <p>Film Title: {{ comment.review.film.film_title }}</p>
-        <p>Tagline: {{ comment.review.slug }}</p>
+        <p><strong>Film Title: </strong>{{ comment.review.film.film_title }}</p>
+        <p><strong>Tagline: </strong>{{ comment.review.slug }}</p>
+        <p>Comment posted on {{ comment.created_on }}</p>
+        <p>"{{ comment.content }}"</p>
         <a href="{% url 'edit_comment' comment_id=comment.id %}">Edit</a>
         <a href="{% url 'delete_comment' comment_id=comment.id %}">Delete</a>
     </div>

@@ -1,161 +1,243 @@
+/* Custom Styles */
 body {
-    background-color: red;
+    background-color: #002e2e;
+    color: #EDEDED;
+    font-family: 'Helvetica Neue', sans-serif;
 }
 
-.brand {
-    font-family: Lato, sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #4A4A4F;
+:root {
+    --primary-color: #FF3300;
+    --accent-color: #6495ED;
 }
 
-.red-o {
-    color: #E84610;
+/* Typography */
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--primary-color);
+    background-color: #333;
+    text-transform: uppercase;
+    display: inline;
+    padding: 0em 0.15em;
 }
 
-.thin {
-    font-weight: 300;
+.not-capitalized {
+    text-transform: none;
 }
 
-.light-bg {
-    background-color: #fff;
+/* Navigation */
+.navbar {
+    background-color: #333;
+    border-bottom: 1px solid #6495ED;
 }
 
-.dark-bg {
-    background-color: #445261;
+.navbar-brand {
+    font-family: 'Workbench', sans-serif;
+    font-size: 34px;
+    letter-spacing: 1.5px;
+    color: #EDEDED;
+    margin-right: 20px;
+    margin-left: 10px;
 }
 
-.main-bg {
-    background-color: #F9FAFC;
+.navbar-brand:hover {
+    color: #EDEDED;
 }
 
-.card {
+.navbar-nav .nav-link,
+.navbar-text {
+    font-family: 'Montserrat', sans-serif;
+    color: #EDEDED;
+    margin-right: 20px;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: #222;
+    color: #FFF;
+}
+
+.navbar-toggler-icon,
+.navbar-toggler {
+    color: #EDEDED;
+    background-color: #333;
+}
+
+.dropdown-menu {
+    background-color: #333;
+    color: #EDEDED;
     border: none;
-    background-color: transparent;
+}
+
+.dropdown-menu a {
+    color: #EDEDED;
+    padding: 8px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu a.active {
+    color: #FFF;
+}
+
+.dropdown-menu a:hover {
+    background-color: #222;
+    color: #FFF;
+}
+
+/* Sections */
+section {
+    padding: 20px 0;
+}
+
+.hero-section {
+    background-image: url('../images/movie-theater-4609877_1920.webp');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    text-align: center;
+    padding: 100px 0;
+}
+
+/* Forms */
+.form-group label {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: normal;
+    text-align: center;
+    color: #EDEDED;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="number"],
+input[type="password"],
+textarea,
+select {
+    border-radius: 0.25rem;
+    border: 1px solid #222;
+        font-family: 'Helvetica Neue', sans-serif;
+    font-weight: normal;
+    width: 90%;
+    background-color: #FFF;
+    color: #333;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+}
+
+/* Buttons */
+button.btn-primary {
+    background-color: var(--primary-color);
+    border: 1px solid #EDEDED;
+    color: #EDEDED;
+}
+
+button.btn-primary:hover {
+    background-color: var(--accent-color);
+    border: 1px solid #EDEDED;
+    color: #EDEDED;
+}
+
+/* Cards */
+.card {
+    font-family: 'Helvetica Neue', sans-serif;
+    color: #EDEDED;
+    background-color: #333;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card p {
+    font-family: 'Helvetica Neue', sans-serif;
+    margin-bottom: 6px;
+}
+
+.card a {
+    background-color: var(--primary-color);
+    color: #EDEDED;
+    padding: 2px 4px;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px 3px;
+    border: 1px solid #EDEDED;
+    border-radius: 4px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.card a:hover {
+    background-color: var(--accent-color);
+    color: #FFF;
 }
 
 .image-container {
-    position: relative;
-}
-
-.image-flash {
-    position: absolute;
-    bottom: 5%;
-    min-width: 30%;
-    left: -2px;
-    background-color: #188181;
-}
-
-.scale {
     width: 100%;
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
     height: auto;
 }
 
-.author {
-    color: white;
-    margin: 4px;
-    text-transform: uppercase;
+/* Pagination */
+.pagination {
+    padding: 20px 0;
+    text-align: center;
 }
 
-.masthead {
-    margin-top: 10px;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    height: 33vh;
-    width: 100%;
+.pagination .page-item {
+    display: inline;
+    margin-right: 10px;
 }
 
-.masthead-text {
-    background-color: #445261;
-    color: white;
-    position: relative;
-}
-
-.masthead-image {
-    position: relative;
-    overflow: hidden;
-}
-
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #445261;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
-}
-
-.post-link {
+.pagination .page-link {
+    color: var(--primary-color);
+    background-color: transparent;
+    border: none;
     text-decoration: none;
-    color: #445261;
+    transition: color 0.3s;
 }
 
-.post-link:hover,
-.page-link {
-    color: #E84610;
-}
-
-.post-title {
-    margin-top: 10%;
-    margin-left: 5%;
-}
-
-.post-subtitle {
-    margin-left: 5%;
-    color: lightgray;
-}
-
-.btn-signup,
-.btn-edit {
-    background-color: #188181;
-    color: #fff;
-}
-
-.btn-signup:hover,
-.btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
-}
-
-.link {
-    color: #23BBBB;
-    text-decoration: none;
-}
-
-.link:hover,
-.link:active {
-    color: #445261;
+.pagination .page-link:hover {
+    color: var(--accent-color);
     text-decoration: underline;
 }
 
-.btn-like {
-    color: #E84610;
-    border: none;
-    background: transparent;
+.pagination .page-item.active .page-link {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #333;
 }
 
-.btn-delete {
-    color: #fff;
-    background: #E84610;
+/* Footer */
+.footer {
+    background-color: #333;
+    font-size: 12px;
+    color: #EDEDED;
+    border-top: 1px solid #6495ED;
 }
 
-.btn-like:hover,
-.btn-like:active {
-    color: #E84610;
-    background: transparent;
-    border: none;
+.footer p {
+    margin-bottom: 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.faded {
-    color: rgb(172, 175, 175);
-}
-
-.approval {
-    color: rgb(222, 146, 168);
+.footer i {
+    color: #EDEDED;
+    font-size: 1.5rem;
+    margin: 5px 5px;
 }

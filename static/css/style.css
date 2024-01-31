@@ -91,6 +91,15 @@ section {
     padding: 20px 0;
 }
 
+.hero-section {
+    background-image: url('../images/movie-theater-4609877_1920.webp');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    text-align: center;
+    padding: 100px 0;
+}
+
 /* Forms */
 .form-group label {
     font-family: 'Helvetica Neue', sans-serif;
@@ -107,7 +116,7 @@ textarea,
 select {
     border-radius: 0.25rem;
     border: 1px solid #222;
-        font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Helvetica Neue', sans-serif;
     font-weight: normal;
     width: 90%;
     background-color: #FFF;
