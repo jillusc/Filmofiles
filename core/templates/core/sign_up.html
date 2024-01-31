@@ -1,54 +1,61 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <section class="container px-0 py-4">
-    <div class="row justify-content-center">
-        <div class="col-md-3 text-center">
-            <div class="my-3">
-                <h1>Sign Up</h1>
-            </div>
-            <form method="post">
-                {% csrf_token %}
-                <div class="row mb-3">
-                    <label class="col-sm-12 col-form-label" for="{{ form.username.id_for_label }}">
-                        {{ form.username.label }}
-                    </label>
-                    <div class="col-sm-12">
-                        {{ form.username }}
-                        {% if form.username.errors %}
-                        <div class="alert alert-danger">{{ form.username.errors }}</div>
-                        {% endif %}
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <label class="col-sm-12 col-form-label" for="{{ form.password.id_for_label }}">
-                        {{ form.password.label }}
-                    </label>
-                    <div class="col-sm-12">
-                        {{ form.password }}
-                        {% if form.password.errors %}
-                        <div class="alert alert-danger">{{ form.password.errors }}</div>
-                        {% endif %}
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <label class="col-sm-12 col-form-label" for="{{ form.confirm_password.id_for_label }}">
-                        {{ form.confirm_password.label }}
-                    </label>
-                    <div class="col-sm-12">
-                        {{ form.confirm_password }}
-                        {% if form.confirm_password.errors %}
-                        <div class="alert alert-danger">{{ form.confirm_password.errors }}</div>
-                        {% endif %}
-                    </div>
-                </div>
-
-                <div class="text-center mt-6">
-                    <button class="btn btn-primary" type="submit">Sign Up</button>
-                </div>
-            </form>
+  <div class="row justify-content-center">
+    <div class="col-md-3 text-center">
+      <div class="my-3">
+        <h1>Sign Up</h1>
+      </div>
+      <form method="post">
+        {% csrf_token %}
+        <div class="row mb-3">
+          <label
+            class="col-sm-12 col-form-label"
+            for="{{ form.username.id_for_label }}"
+          >
+            {{ form.username.label }}
+          </label>
+          <div class="col-sm-12">
+            {{ form.username }} {% if form.username.errors %}
+            <div class="alert alert-danger">{{ form.username.errors }}</div>
+            {% endif %}
+          </div>
         </div>
+
+        <div class="row mb-3">
+          <label
+            class="col-sm-12 col-form-label"
+            for="{{ form.password.id_for_label }}"
+          >
+            {{ form.password.label }}
+          </label>
+          <div class="col-sm-12">
+            {{ form.password }} {% if form.password.errors %}
+            <div class="alert alert-danger">{{ form.password.errors }}</div>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="col-sm-12 col-form-label"
+            for="{{ form.confirm_password.id_for_label }}"
+          >
+            {{ form.confirm_password.label }}
+          </label>
+          <div class="col-sm-12">
+            {{ form.confirm_password }} {% if form.confirm_password.errors %}
+            <div class="alert alert-danger">
+              {{ form.confirm_password.errors }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="text-center mt-6">
+          <button class="btn btn-primary" type="submit">Sign Up</button>
+        </div>
+      </form>
     </div>
+  </div>
 </section>
 {% endblock %}

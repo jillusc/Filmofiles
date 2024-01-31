@@ -8,7 +8,10 @@ from .forms import ReviewForm, CommentForm
 
 
 def home(request):
-    """ Display the home page with form for submitting a film review. """
+    return render(request, "content/index.html")
+
+
+def submit_review(request):
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -16,7 +19,8 @@ def home(request):
             director = form.cleaned_data.get('director')
             year = form.cleaned_data.get('year')
             genre = form.cleaned_data.get('genre')
-
+            image = request.FILES.get('image')
+            result = cloudinary.uploader.upload(image)
             film, created = Film.objects.get_or_create(
                 film_title=film_title,
                 director=director,
@@ -31,11 +35,9 @@ def home(request):
             return redirect('browse', page=1)
         else:
             print("Form errors:", form.errors)
-            return render(request, "content/index.html", {'form': form})
-    else:
-        form = ReviewForm()
 
-    return render(request, "content/index.html", {'form': form})
+    form = ReviewForm()
+    return render(request, "content/submit_review.html", {'form': form})
 
 
 class ReviewsList(generic.ListView):

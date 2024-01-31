@@ -18,7 +18,7 @@ class ReviewForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'placeholder':
                                       'Summarise your review in one line...'}))
     rating = forms.IntegerField(
-        min_value=0, max_value=10, required=True, label='Rating /10')
+        min_value=0, max_value=10, required=True, label='Rating / 10')
 
     class Meta:
         model = Review
