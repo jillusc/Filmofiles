@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section class="container py-4">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h3 class="mt-4 mb-2">Submit a review</h3>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6 mt-4 mb-2">
+            <form action="{% url 'home' %}" method="post">
+                {% csrf_token %}
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="{{ form.film_title.id_for_label }}">Film title</label>
+                    <div class="col-sm-8">{{ form.film_title }}</div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="{{ form.director.id_for_label }}">Director</label>
+                    <div class="col-sm-8">{{ form.director }}</div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="{{ form.year.id_for_label }}">Release year</label>
+                    <div class="col-sm-3">{{ form.year }}</div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="{{ form.genre.id_for_label }}">Genre</label>
+                    <div class="col-sm-8">{{ form.genre }}</div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="{{ form.content.id_for_label }}">Review content</label>
+                    <div class="col-sm-8">{{ form.content }}</div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="{{ form.slug.id_for_label }}">Tagline</label>
+                    <div class="col-sm-8">{{ form.slug }}</div>
+                    {% if form.slug.errors %}
+                    <div class="alert alert-danger">{{ form.slug.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="{{ form.rating.id_for_label }}">Rating /10</label>
+                    <div class="col-sm-3">{{ form.rating }}</div>
+                    <div class="col-sm-2 text-center">
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

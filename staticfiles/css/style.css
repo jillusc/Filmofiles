@@ -2,19 +2,16 @@
 body {
     background-color: #002e2e;
     color: #EDEDED;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 :root {
     --primary-color: #FF3300;
-    --accent-color: #6495ED;
+    --accent-color: #FFDF00;
 }
 
 /* Typography */
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4 {
     font-family: 'Montserrat', sans-serif;
     color: var(--primary-color);
     background-color: #333;
@@ -30,14 +27,14 @@ h4 {
 /* Navigation */
 .navbar {
     background-color: #333;
-    border-bottom: 1px solid #6495ED;
+    border-bottom: 1px solid #FFDF00;
 }
 
 .navbar-brand {
     font-family: 'Workbench', sans-serif;
     font-size: 34px;
     letter-spacing: 1.5px;
-    color: #EDEDED;
+    color: #FFF;
     margin-right: 20px;
     margin-left: 10px;
 }
@@ -92,17 +89,41 @@ section {
 }
 
 .hero-section {
-    background-image: url('../images/movie-theater-4609877_1920.webp');
-    background-size: cover;
-    background-position: center;
+    background: url('../images/movie-theater-4609877_1920.webp') center/cover no-repeat;
     height: 100vh;
     text-align: center;
     padding: 100px 0;
 }
 
+.site-tag {
+    font-size: 2rem;
+    color: var(--accent-color);
+        background-color: #333;
+            display: inline;
+            padding: 0em 0.15em;
+}
+
+.site-tag-line {
+        font-family: 'Montserrat', sans-serif;
+        color: #FFF;
+        font-size: 1.25rem;
+        background-color: #333;
+        display: inline;
+        padding: 0em 0.15em;
+}
+
+.home-card-body {
+    background-color: #002e2e;
+    color: #EDEDED;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    padding: 20px;
+}
+
 /* Forms */
 .form-group label {
-    font-family: 'Helvetica Neue', sans-serif;
     font-weight: normal;
     text-align: center;
     color: #EDEDED;
@@ -116,7 +137,6 @@ textarea,
 select {
     border-radius: 0.25rem;
     border: 1px solid #222;
-        font-family: 'Helvetica Neue', sans-serif;
     font-weight: normal;
     width: 90%;
     background-color: #FFF;
@@ -126,27 +146,27 @@ select {
 }
 
 /* Buttons */
-button.btn-primary {
+.btn.btn-primary {
+    background-color: var(--accent-color);
+    border: 1px solid #333;
+    color: #333;
+    font-weight: bold;
+}
+
+.btn.btn-primary:hover {
     background-color: var(--primary-color);
     border: 1px solid #EDEDED;
     color: #EDEDED;
-}
-
-button.btn-primary:hover {
-    background-color: var(--accent-color);
-    border: 1px solid #EDEDED;
-    color: #EDEDED;
+    font-weight: bold;
 }
 
 /* Cards */
 .card {
-    font-family: 'Helvetica Neue', sans-serif;
-    color: #EDEDED;
     background-color: #333;
+    color: #EDEDED;
     border: none;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 300px;
 }
 
 .card-body {
@@ -154,12 +174,11 @@ button.btn-primary:hover {
 }
 
 .card p {
-    font-family: 'Helvetica Neue', sans-serif;
     margin-bottom: 6px;
 }
 
 .card a {
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
     color: #EDEDED;
     padding: 2px 4px;
     display: inline-block;
@@ -172,8 +191,13 @@ button.btn-primary:hover {
 }
 
 .card a:hover {
-    background-color: var(--accent-color);
+    background-color: var(--primary-color);
     color: #FFF;
+}
+
+#card-link {
+    text-decoration: none;
+    color: var(--primary-color);
 }
 
 .image-container {
@@ -228,7 +252,7 @@ button.btn-primary:hover {
     background-color: #333;
     font-size: 12px;
     color: #EDEDED;
-    border-top: 1px solid #6495ED;
+    border-top: 1px solid #FFDF00;
 }
 
 .footer p {
