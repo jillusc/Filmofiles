@@ -1,49 +1,60 @@
-{% extends "base.html" %}
-{% load static %}
-{% block content %}
-<div class="container">
-        <div class="row">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-3">
-            <div class="image-container">
-                {% if "placeholder" in review.featured_image.url %}
-                <img class="img-fluid" src="{% static 'images/popcorn-898154_1280.png' %}" alt="placeholder image">
-                {% else %}
-                <img class="img-fluid" src="{{ review.featured_image.url }}" alt="{{ review.film.film_title }}">
-                {% endif %}
-            </div>
-        </div>
-        <div class="col-md-3">
-            <h3 class="not-capitalized">Review: {{ review.film.film_title }} </h3>
-            <p><strong>Tagline:</strong> {{ review.slug }}</p>
-            <p><strong>Author:</strong> {{ review.author }}</p>
-            <p><strong>Date:</strong> {{ review.created_on}}</p>
-            <hr>
-            <p>{{ review.content }}</p>
-        </div>
-        <div class="col-md-3">
-        </div>
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="container py-4 mt-5">
+    <div class="row mt-4 mb-4"></div>
+  <div
+    class="row col-8 offset-2 justify-content-center align-items-center mb-4"
+  >
+    <div class="col-12 col-md-6">
+      <div class="image-container">
+        {% if "placeholder" in review.featured_image.url %}
+        <img
+          class="img-fluid"
+          src="{% static 'images/popcorn-898154_1280.png' %}"
+          alt="placeholder image"
+        />
+        {% else %}
+        <img
+          class="img-fluid"
+          src="{{ review.featured_image.url }}"
+          alt="{{ review.film.film_title }}"
+        />
+        {% endif %}
+      </div>
     </div>
-    <div class="row mt-4">
-        <div class="col-md-8 offset-md-2">
-            <div class="comments-section">
-                <h4>Comments</h4>
-                <div class="comment-box">
-                    {% if user.is_authenticated %}
-                    <form method="post">
-                        {% csrf_token %}
-                        <textarea name="comment" placeholder="Leave a comment..."></textarea>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                    {% else %}
-                    <textarea name="comment" placeholder="Leave a comment..." disabled></textarea>
-                    <p>You need to <a href="{% url 'login' %}">log in</a> to leave a comment. If you're not signed up
-                        yet, <a href="{% url 'signup' %}">register here</a>.</p>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
+    <div class="col-12 col-md-6">
+      <h3 class="not-capitalized">{{ review.film.film_title }}</h3><br>
+      <p>Tagline:<strong> {{ review.slug }} </strong></p>
+      <p>A review by<strong> {{ review.author }} </strong></p>
+      <p><small> {{ review.created_on }} </small></p>
+      <hr />
+      <p class="review-detail-content">"{{ review.content }}"</p>
+    </div>
+  </div>
+
+  <div class="row justify-content-center text-center mt-4">
+    <div class="col-4">
+      <h4>Comments</h4>
+        {% if user.is_authenticated %}
+        <form method="post">
+          {% csrf_token %}
+          <textarea
+            name="comment"
+            class="form-control mb-2"
+            placeholder="Leave a comment..."
+          ></textarea>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        {% else %}
+        <textarea
+          name="comment"
+          class="form-control mb-2"
+          placeholder="Leave a comment..."
+          disabled></textarea>
+        <p><small>
+          You need to be <a href="{% url 'login' %}" class="inline-link">logged in</a> to leave a comment.<br>
+          If you're not signed up yet, <a href="{% url 'signup' %}" class="inline-link">register here.</a></small>
+        </p>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
