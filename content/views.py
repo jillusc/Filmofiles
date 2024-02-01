@@ -30,39 +30,36 @@ def submit_review(request):
             review = form.save(commit=False)
             review.film = film
             review.author = request.user
+            review.approved = False
             review.save()
+            messages.success(
+                request, "Your review is pending approval. Thank you!")
 
             return redirect('browse', page=1)
         else:
-            print("Form errors:", form.errors)
+            messages.error(
+                request, "There was an error with your submission. "
+                         "Please check your information.")
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field}: {error}")
+    else:
+        form = ReviewForm()
 
-    form = ReviewForm()
     return render(request, "content/submit_review.html", {'form': form})
 
 
 class ReviewsList(generic.ListView):
     model = Review
-    queryset = Review.objects.all().order_by("-created_on")
+    queryset = Review.objects.filter(approved=True).order_by("-created_on")
     template_name = "content/browse.html"
     paginate_by = 6
 
 
 def review_detail(request, slug):
     review = get_object_or_404(Review, slug=slug)
-    comments = review.comments.all().order_by("-created_on")
-    comment_count = comments.count()
+    comments = review.comments.filter(approved=True).order_by("-created_on")
     comment_form = CommentForm()
-
-    if request.method == "POST":
-        comment_form = CommentForm(request.POST)
-        if comment_form.is_valid():
-            comment = comment_form.save(commit=False)
-            comment.user_name = request.user
-            comment.review = review
-            comment.save()
-            messages.success(request, 'Comment submitted.')
-            return redirect('review_detail', slug=review.slug)
-
     return render(
         request,
         "content/review_detail.html",
@@ -72,3 +69,26 @@ def review_detail(request, slug):
             "comment_form": comment_form,
         }
     )
+
+
+@login_required
+def submit_comment(request, review_id):
+    review = get_object_or_404(Review, pk=review_id)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.review = review
+            comment.author = request.user
+            comment.approved = False
+            comment.save()
+
+            messages.success(request, "Your comment has been submitted.")
+            return redirect('review_detail', slug=review.slug)
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field}: {error}")
+
+    return redirect('review_detail', slug=review.slug)

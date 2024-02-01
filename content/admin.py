@@ -54,3 +54,7 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ('user_name', 'review', 'created_on', 'approved')
     search_fields = ['user_name__username', 'review__film_title']
     list_filter = ('created_on', 'approved')
+
+    @admin.action(description="Approve selected comments")
+    def approve_comments(self, request, queryset):
+        queryset.update(approved=True, status=1)
