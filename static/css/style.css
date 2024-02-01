@@ -11,7 +11,10 @@ body {
 }
 
 /* Typography */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: 'Montserrat', sans-serif;
     color: var(--primary-color);
     background-color: #333;
@@ -24,7 +27,8 @@ h1, h2, h3, h4 {
     text-transform: none;
 }
 
-.inline p, .inline h3 {
+.inline p,
+.inline h3 {
     display: inline;
     margin: 0;
     padding: 0;
@@ -83,7 +87,7 @@ h1, h2, h3, h4 {
 .navbar-toggler {
     color: #EDEDED;
     background-color: #333;
-        border-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .dropdown-menu {
@@ -258,17 +262,16 @@ select {
     background-color: transparent;
     border: none;
     text-decoration: none;
-    transition: color 0.3s;
 }
 
 .pagination .page-link:hover {
     color: var(--accent-color);
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .pagination .page-item.active .page-link {
     font-weight: bold;
-    text-decoration: underline;
+    text-decoration: none;
     color: #333;
 }
 

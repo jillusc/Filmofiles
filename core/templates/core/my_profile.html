@@ -2,6 +2,13 @@
 {% load static %}
 {% block content %}
 <div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
     <div class="row justify-content-center">
         <div class="col-md-4 text-center mt-4 mb-4">
             <h1>My Profile</h1>
@@ -9,7 +16,7 @@
     </div>
     <div class="row">
         <div class="col-12 mt-4 mb-4 text-center inline">
-            <p>View, edit and delete your</p><h3><a href="#my-reviews" class="subtle-link"> reviews </a></h3><p>and</p><h3><a href="#my-comments" class="subtle-link"> comments </a></h3><p>here.</p>
+            <p>View, edit and delete your </p><h3><a href="#my-reviews" class="subtle-link">reviews</a></h3><p> and </p><h3><a href="#my-comments" class="subtle-link">comments</a></h3><p> here.</p>
         </div>
         <div class="col-12 mb-4 text-center">
             <p>Want to <a href="#delete-account" class="subtle-link">delete your account</a>?</p>
@@ -69,4 +76,5 @@
         </div>
 </div>
 </div>
+<script src="{% static 'js/script.js' %}"></script>
 {% endblock %}

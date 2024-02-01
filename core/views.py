@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -35,6 +36,12 @@ def login_view(request):
 
 
 @login_required
+def logout_view(request):
+    messages.success(request, "You have been successfully logged out.")
+    return redirect('home')
+
+
+@login_required
 def my_profile(request):
     user_reviews = Review.objects.filter(author=request.user)
     user_comments = Comment.objects.filter(user_name=request.user)
@@ -51,6 +58,9 @@ def edit_review(request, review_id):
         if form.is_valid():
             review.content = form.cleaned_data['content']
             review.save()
+            messages.success(request, 'Review successfully updated')
+            return redirect('my_profile')
+
             return redirect('my_profile')
     else:
         form = EditReviewForm(initial={'content': review.content})
@@ -74,6 +84,8 @@ def edit_comment(request, comment_id):
         if form.is_valid():
             comment.content = form.cleaned_data['content']
             comment.save()
+            messages.success(request, 'Comment successfully updated')
+
             return redirect('my_profile')
     else:
         form = EditCommentForm(initial={'content': comment.content})

@@ -1,13 +1,12 @@
-function confirmDelete(url) {
-    if (confirm('Are you sure you want to delete this?')) {
-        window.location.href = url;
-    }
+function removeAlert() {
+  var alert = document.querySelector('.alert-message');
+  if (alert) {
+    alert.remove();
+  }
 }
 
-function showEditForm(formId) {
-    document.getElementById(formId).style.display = 'block';
-}
-
-function hideEditForm(formId) {
-    document.getElementById(formId).style.display = 'none';
-}
+document.addEventListener('click', function (event) {
+  if (!event.target.closest('.alert')) {
+    removeAlert();
+  }
+});
