@@ -1,36 +1,72 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
-<h1>My Profile</h1>
-<section>
-    <h2>My Reviews</h2>
-    {% for review in reviews %}
-    <div>
-        <h4 class="not-capitalized">{{ review.film.film_title }}</h4>
-            <p><strong>Tagline: </strong>{{ review.slug }}</p>
-            <p><strong>Created: </strong>{{ review.created_on }}</p>
-            <p>"{{ review.content }}"</p>
-            <a href="{% url 'edit_review' review_id=review.id %}">Edit</a>
-            <a href="{% url 'delete_review' review_id=review.id %}">Delete</a>
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center mt-4 mb-4">
+            <h1>My Profile</h1>
+        </div>
     </div>
-    {% endfor %}
-</section>
-
-<section>
-    <h2>My Comments</h2>
-    {% for comment in comments %}
-    <div>
-        <p><strong>Film Title: </strong>{{ comment.review.film.film_title }}</p>
-        <p><strong>Tagline: </strong>{{ comment.review.slug }}</p>
-        <p>Comment posted on {{ comment.created_on }}</p>
-        <p>"{{ comment.content }}"</p>
-        <a href="{% url 'edit_comment' comment_id=comment.id %}">Edit</a>
-        <a href="{% url 'delete_comment' comment_id=comment.id %}">Delete</a>
+    <div class="row">
+        <div class="col-12 mt-4 mb-4 text-center inline">
+            <p>View, edit and delete your</p><h3><a href="#my-reviews" class="subtle-link"> reviews </a></h3><p>and</p><h3><a href="#my-comments" class="subtle-link"> comments </a></h3><p>here.</p>
+        </div>
+        <div class="col-12 mb-4 text-center">
+            <p>Want to <a href="#delete-account" class="subtle-link">delete your account</a>?</p>
+        </div>
     </div>
-    {% endfor %}
-</section>
 
-<section>
-    <h2>My Account</h2>
-    <a href="{% url 'delete_account' %}">Delete My Account</a>
-</section>
+    <div class="row" id="my-reviews">
+        <div class="col-6 mt-4 mb-4 text-center">
+            <h3>My Reviews ...</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mb-4 text-center">
+            {% for review in reviews %}
+            <div class="mb-4">
+                <h4 class="not-capitalized mb-4">{{ review.film.film_title|title }}</h4>
+                <p><strong>Tagline: </strong>{{ review.slug }}</p>
+                <p><strong>Created: </strong>{{ review.created_on }}</p>
+                <p>"{{ review.content }}"</p>
+                <a href="{% url 'edit_review' review_id=review.id %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'delete_review' review_id=review.id %}" class="btn btn-primary">Delete</a>
+                <hr>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row" id="my-comments">
+        <div class="col-6 mt-4 mb-4 text-center">
+            <h3>My Comments ...</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mb-4 text-center">
+            {% for comment in comments %}
+            <div class="mb-4">
+                <p><strong>Film Title: </strong>{{ comment.review.film.film_title }}</p>
+                <p><strong>Tagline: </strong>{{ comment.review.slug }}</p>
+                <p>Comment posted on {{ comment.created_on }}</p>
+                <p>"{{ comment.content }}"</p>
+                <a href="{% url 'edit_comment' comment_id=comment.id %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'delete_comment' comment_id=comment.id %}" class="btn btn-primary">Delete</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row" id="delete-account">
+        <div class="col-6 mt-4 mb-4 text-center">
+            <h3>My Account ...</h3>
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3 mb-4 text-center">
+                <a href="{% url 'delete_account' %}" class="btn btn-danger">Delete My Account</a>
+            </div>
+        </div>
+</div>
+</div>
 {% endblock %}
