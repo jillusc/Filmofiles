@@ -10,3 +10,10 @@ document.addEventListener('click', function (event) {
     removeAlert();
   }
 });
+
+var backLink = document.getElementById('back-link');
+
+backLink.addEventListener('click', function (event) {
+    event.preventDefault();
+    history.go(-1);
+});
