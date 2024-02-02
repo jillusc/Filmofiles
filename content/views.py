@@ -8,10 +8,18 @@ from .forms import ReviewForm, CommentForm
 
 
 def home(request):
+    """
+    This renders the home page.
+    """
     return render(request, "content/index.html")
 
 
 def submit_review(request):
+    """
+    This handles the submission of a film review. It processes and validates
+    the form data that is submitted, creates a new Film object if necessary,
+    associates the review with the film, and displays appropriate messages.
+    """
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -50,6 +58,9 @@ def submit_review(request):
 
 
 class ReviewsList(generic.ListView):
+    """
+    This displays a list of approved reviews on the Browse page.
+    """
     model = Review
     queryset = Review.objects.filter(approved=True).order_by("-created_on")
     template_name = "content/browse.html"
@@ -57,9 +68,20 @@ class ReviewsList(generic.ListView):
 
 
 def review_detail(request, slug):
+    """
+    This displays the full review on its own page, review_detail.
+    """
     review = get_object_or_404(Review, slug=slug)
     comments = review.comments.filter(approved=True).order_by("-created_on")
-    comment_form = CommentForm()
+    if request.method == 'POST' and request.user.is_authenticated:
+        comment_form = CommentForm(request.POST, user=request.user)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.review = review
+            comment.save()
+            return redirect('review_detail', slug=slug)
+    else:
+        comment_form = CommentForm()
     return render(
         request,
         "content/review_detail.html",
@@ -73,6 +95,13 @@ def review_detail(request, slug):
 
 @login_required
 def submit_comment(request, review_id):
+    """
+    This handles the submission of a comment. It validates the form data,
+    creates a new comment and associates it with the review; sets the comment's
+    author attribute from the logged-in user and marks the comment as
+    unapproved. It redirects to the review_detail page with success or error
+    messages.
+    """
     review = get_object_or_404(Review, pk=review_id)
 
     if request.method == 'POST':

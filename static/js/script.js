@@ -11,9 +11,12 @@ document.addEventListener('click', function (event) {
   }
 });
 
-var backLink = document.getElementById('back-link');
-
-backLink.addEventListener('click', function (event) {
-    event.preventDefault();
-    history.go(-1);
+document.addEventListener('DOMContentLoaded', function () {
+    var backLink = document.getElementById('back-link');
+    if (backLink) {
+        backLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            history.go(-1);
+        });
+    }
 });

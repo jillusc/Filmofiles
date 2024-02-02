@@ -194,7 +194,7 @@ select {
 }
 
 .card-body {
-    padding: 20px;
+    padding: 10px 20px;
 }
 
 .card p {
@@ -212,6 +212,7 @@ select {
     border-radius: 4px;
     text-decoration: none;
     text-align: center;
+        outline: none;
 }
 
 .card a:hover {
@@ -222,6 +223,7 @@ select {
 #card-link {
     text-decoration: none;
     color: var(--primary-color);
+    outline: none;
 }
 
 .image-container {
@@ -232,6 +234,7 @@ select {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
 }
 
 .image-container img {
@@ -258,6 +261,7 @@ select {
     background-color: transparent;
     border: none;
     text-decoration: none;
+        outline: none;
 }
 
 .pagination .page-link:hover {
@@ -269,6 +273,7 @@ select {
     font-weight: bold;
     text-decoration: none;
     color: #333;
+        outline: none;
 }
 
 /* Footer */

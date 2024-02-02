@@ -1,3 +1,6 @@
+"""
+Custom Forms for Review and Comment Models.
+"""
 import datetime
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
@@ -14,9 +17,8 @@ class ReviewForm(forms.ModelForm):
     content = forms.CharField(widget=forms.Textarea(
         attrs={'placeholder': 'Share your thoughts on this film'}))
     slug = forms.CharField(
-        max_length=50, required=False,
-        widget=forms.TextInput(attrs={'placeholder':
-                                      'Summarise your review in one line...'}))
+        max_length=50, widget=forms.TextInput(
+            attrs={'placeholder': 'Summarise your review in one line...'}))
     rating = forms.IntegerField(
         min_value=0, max_value=10, required=True, label='Rating / 10')
 
@@ -72,7 +74,7 @@ class CommentForm(forms.ModelForm):
     def save(self, commit=True):
         comment = super(CommentForm, self).save(commit=False)
         if self.user:
-            comment.user_name = self.user
+            comment.user_name = self.user.username
         if commit:
             comment.save()
         return comment

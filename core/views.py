@@ -3,11 +3,16 @@ from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
 from .forms import SignUpForm, LogInForm, EditReviewForm, EditCommentForm
 from content.models import Review, Comment
 
 
 def signup_view(request):
+    """This view handles user registration.
+    Upon successful registration, the user is automatically logged in and
+    redirected to the home page.
+    """
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
@@ -24,6 +29,9 @@ def signup_view(request):
 
 
 def login_view(request):
+    """This view handles user login.
+    Upon successful login, the user is redirected to the home page.
+    """
     if request.method == 'POST':
         form = LogInForm(request, data=request.POST)
         if form.is_valid():
@@ -37,12 +45,21 @@ def login_view(request):
 
 @login_required
 def logout_view(request):
+    """This view handles user logout.
+    Upon successful logout, the user is redirected to the home page, where
+    a success message is displayed.
+    """
     messages.success(request, "You have been successfully logged out.")
-    return redirect('home')
+    logout(request)
+    return redirect(reverse_lazy('home'))
 
 
 @login_required
 def my_profile(request):
+    """
+    This view displays user's profile page, showing their submitted reviews and
+    comments.
+    """
     user_reviews = Review.objects.filter(author=request.user)
     user_comments = Comment.objects.filter(user_name=request.user)
     return render(request, 'core/my_profile.html', {'reviews': user_reviews,
@@ -51,6 +68,10 @@ def my_profile(request):
 
 @login_required
 def edit_review(request, review_id):
+    """
+    This view allows the author of a review to edit its content in a new page
+    and save the changes. It redirects back to the my_profile page.
+    """
     review = get_object_or_404(Review, id=review_id, author=request.user)
 
     if request.method == 'POST':
@@ -70,6 +91,9 @@ def edit_review(request, review_id):
 
 @login_required
 def delete_review(request, review_id):
+    """
+    This view allows the author of a review to delete it.
+    """
     review = get_object_or_404(Review, id=review_id)
     review.delete()
     return redirect('my_profile')
@@ -77,6 +101,10 @@ def delete_review(request, review_id):
 
 @login_required
 def edit_comment(request, comment_id):
+    """
+    This view allows the author of a comment to edit its content in a new page
+    and save the changes. It redirects back to the my_profile page.
+    """
     comment = get_object_or_404(Comment, id=comment_id, user_name=request.user)
 
     if request.method == 'POST':
@@ -95,6 +123,9 @@ def edit_comment(request, comment_id):
 
 @login_required
 def delete_comment(request, comment_id):
+    """
+    This view allows the author of a review to delete it.
+    """
     comment = get_object_or_404(Comment, id=comment_id)
     comment.delete()
     return redirect('my_profile')
@@ -102,6 +133,10 @@ def delete_comment(request, comment_id):
 
 @login_required
 def delete_account(request):
+    """
+    This view allows the user to delete their account. It redirects to the
+    home page.
+    """
     user = request.user
     user.delete()
     logout(request)

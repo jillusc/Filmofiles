@@ -1,3 +1,7 @@
+"""
+Admin Configurations for Film, Review, and Comment Models
+"""
+
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
 from .models import Film, Review, Comment
@@ -13,9 +17,13 @@ class FilmAdmin(admin.ModelAdmin):
 
 @admin.register(Review)
 class ReviewAdmin(SummernoteModelAdmin):
+    """This class defines the admin interface for the Review model.
+    It includes custom actions for managing reviews.
+    """
+
     list_display = ('film_title', 'slug', 'status', 'created_on', 'updated_on')
     search_fields = ['film__film_title']
-    list_filter = ('status', 'author')
+    list_filter = ('approved', 'author')
     ordering = ('-created_on',)
     summernote_fields = ('content',)
     form = ReviewForm
@@ -54,6 +62,7 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ('user_name', 'review', 'created_on', 'approved')
     search_fields = ['user_name__username', 'review__film_title']
     list_filter = ('created_on', 'approved')
+    actions = ['approve_comments']
 
     @admin.action(description="Approve selected comments")
     def approve_comments(self, request, queryset):
