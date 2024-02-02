@@ -10,3 +10,13 @@ document.addEventListener('click', function (event) {
     removeAlert();
   }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    var backLink = document.getElementById('back-link');
+    if (backLink) {
+        backLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            history.go(-1);
+        });
+    }
+});
