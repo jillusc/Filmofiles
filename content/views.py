@@ -23,20 +23,7 @@ def submit_review(request):
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
-            film_title = form.cleaned_data.get('film_title')
-            director = form.cleaned_data.get('director')
-            year = form.cleaned_data.get('year')
-            genre = form.cleaned_data.get('genre')
-            image = request.FILES.get('image')
-            result = cloudinary.uploader.upload(image)
-            film, created = Film.objects.get_or_create(
-                film_title=film_title,
-                director=director,
-                year=year,
-                genre=genre
-            )
             review = form.save(commit=False)
-            review.film = film
             review.author = request.user
             review.approved = False
             review.save()
@@ -45,6 +32,7 @@ def submit_review(request):
 
             return redirect('browse', page=1)
         else:
+            print('error')
             messages.error(
                 request, "There was an error with your submission. "
                          "Please check your information.")

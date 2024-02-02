@@ -14,6 +14,11 @@ class Film(models.Model):
     genre = models.CharField(max_length=50)
     year = models.IntegerField()
     director = models.CharField(max_length=100)
+    featured_image = CloudinaryField('image', default='placeholder',
+                                     blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.film_title} - {self.genre}"
 
 
 class Review(models.Model):
@@ -28,7 +33,6 @@ class Review(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     approved = models.BooleanField(default=False)
     updated_on = models.DateTimeField(auto_now=True)
-    featured_image = CloudinaryField('image', default='placeholder')
 
     class Meta:
         ordering = ["-created_on"]

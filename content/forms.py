@@ -10,22 +10,9 @@ current_year = datetime.date.today().year
 
 
 class ReviewForm(forms.ModelForm):
-    film_title = forms.CharField(max_length=100)
-    director = forms.CharField(max_length=100)
-    year = forms.IntegerField(min_value=1888, max_value=current_year)
-    genre = forms.CharField(max_length=100)
-    content = forms.CharField(widget=forms.Textarea(
-        attrs={'placeholder': 'Share your thoughts on this film'}))
-    slug = forms.CharField(
-        max_length=50, widget=forms.TextInput(
-            attrs={'placeholder': 'Summarise your review in one line...'}))
-    rating = forms.IntegerField(
-        min_value=0, max_value=10, required=True, label='Rating / 10')
-
     class Meta:
         model = Review
-        fields = ['film_title', 'director', 'year',
-                  'genre', 'content', 'slug', 'rating']
+        fields = ['film', 'slug', 'content', 'rating']
 
     def clean_slug(self):
         slug = self.cleaned_data['slug']
@@ -36,26 +23,26 @@ class ReviewForm(forms.ModelForm):
                 "different.")
         return new_slug
 
-    def save(self, commit=True):
-        review = super().save(commit=False)
+    # def save(self, commit=True):
+    #     review = super().save(commit=False)
 
-        film_title = self.cleaned_data.get('film_title')
-        director = self.cleaned_data.get('director')
-        year = self.cleaned_data.get('year')
-        genre = self.cleaned_data.get('genre')
+    #     film_title = self.cleaned_data.get('film_title')
+    #     director = self.cleaned_data.get('director')
+    #     year = self.cleaned_data.get('year')
+    #     genre = self.cleaned_data.get('genre')
 
-        film, created = Film.objects.get_or_create(
-            film_title=film_title,
-            director=director,
-            year=year,
-            genre=genre
-        )
+    #     film, created = Film.objects.get_or_create(
+    #         film_title=film_title,
+    #         director=director,
+    #         year=year,
+    #         genre=genre
+    #     )
 
-        review.film = film
+    #     review.film = film
 
-        if commit:
-            review.save()
-        return review
+    #     if commit:
+    #         review.save()
+    #     return review
 
 
 class CommentForm(forms.ModelForm):

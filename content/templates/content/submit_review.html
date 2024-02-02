@@ -10,27 +10,12 @@
 
     <div class="row justify-content-center">
         <div class="col-md-6 mt-4 mb-2">
-            <form action="{% url 'home' %}" method="post">
+            <form action="{% url 'submit_review' %}" method="post">
                 {% csrf_token %}
 
                 <div class="row mb-3">
-                    <label class="col-sm-4 col-form-label" for="{{ form.film_title.id_for_label }}">Film title</label>
-                    <div class="col-sm-8">{{ form.film_title }}</div>
-                </div>
-
-                <div class="row mb-3">
-                    <label class="col-sm-4 col-form-label" for="{{ form.director.id_for_label }}">Director</label>
-                    <div class="col-sm-8">{{ form.director }}</div>
-                </div>
-
-                <div class="row mb-3">
-                    <label class="col-sm-4 col-form-label" for="{{ form.year.id_for_label }}">Release year</label>
-                    <div class="col-sm-3">{{ form.year }}</div>
-                </div>
-
-                <div class="row mb-3">
-                    <label class="col-sm-4 col-form-label" for="{{ form.genre.id_for_label }}">Genre</label>
-                    <div class="col-sm-8">{{ form.genre }}</div>
+                    <label class="col-sm-4 col-form-label" for="{{ form.film_title.id_for_label }}">Film</label>
+                    <div class="col-sm-8">{{ form.film}}</div>
                 </div>
 
                 <div class="row mb-3">
