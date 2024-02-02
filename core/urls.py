@@ -18,6 +18,6 @@ urlpatterns = [
          views.edit_comment, name='edit_comment'),
     path('delete_comment/<int:comment_id>/',
          views.delete_comment, name='delete_comment'),
-    path('confirm_delete_review/<int:review_id>/',
-         views.confirm_delete_review, name='confirm_delete_review'),
+    path('confirm_delete_comment/<int:comment_id>/',
+         views.confirm_delete_comment, name='confirm_delete_comment'),
 ]

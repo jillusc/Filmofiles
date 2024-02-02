@@ -56,7 +56,7 @@
                 <p>Comment posted on {{ comment.created_on }}</p>
                 <p>"{{ comment.content }}"</p>
                 <a href="{% url 'edit_comment' comment_id=comment.id %}" class="btn btn-primary">Edit</a>
-                <a href="{% url 'delete_comment' comment_id=comment.id %}" class="btn btn-primary">Delete</a>
+                <a href="{% url 'confirm_delete_comment' comment_id=comment.id %}" class="btn btn-primary">Delete</a>
             </div>
             {% endfor %}
         </div>

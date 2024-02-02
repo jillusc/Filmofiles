@@ -60,7 +60,7 @@ class ReviewAdmin(SummernoteModelAdmin):
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('user_name', 'review', 'created_on', 'approved')
-    search_fields = ['user_name__username', 'review__film_title']
+    search_fields = ['user_name__username', 'review__film__film_title']
     list_filter = ('created_on', 'approved')
     actions = ['approve_comments']
 

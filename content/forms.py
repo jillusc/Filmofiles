@@ -61,7 +61,7 @@ class CommentForm(forms.ModelForm):
     def save(self, commit=True):
         comment = super(CommentForm, self).save(commit=False)
         if self.user:
-            comment.user_name = self.user.username
+            comment.user_name = self.user
         if commit:
             comment.save()
         return comment

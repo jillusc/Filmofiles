@@ -97,8 +97,9 @@ def delete_review(request, review_id):
     review = get_object_or_404(Review, id=review_id)
     review.delete()
     messages.success(
-        request, "Your review has been deleted!")
+                request, "Your review has been deleted!")
     return redirect('my_profile')
+
 
 
 @login_required
@@ -107,8 +108,7 @@ def confirm_delete_review(request, review_id):
     This view allows the author of a review to confirm deletion of it.
     """
     review = get_object_or_404(Review, id=review_id)
-    return render(request, 'core/confirm_delete_review.html', {'review':
-                                                               review})
+    return render(request, 'core/confirm_delete_review.html', {'review': review})
 
 
 @login_required
@@ -136,7 +136,7 @@ def edit_comment(request, comment_id):
 @login_required
 def delete_comment(request, comment_id):
     """
-    This view allows the author of a review to delete it.
+    This view allows the author of a comment to delete it.
     """
     comment = get_object_or_404(Comment, id=comment_id)
     comment.delete()
@@ -151,7 +151,7 @@ def confirm_delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
     return render(request, 'core/confirm_delete_comment.html',
                   {'comment': comment})
-
+            
 
 @login_required
 def delete_account(request):

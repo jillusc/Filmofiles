@@ -2,10 +2,8 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views import generic
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from .models import Review, Comment, Film
+from .models import Review, Comment
 from .forms import ReviewForm, CommentForm
-
 
 def home(request):
     """
@@ -45,28 +43,20 @@ def submit_review(request):
     return render(request, "content/submit_review.html", {'form': form})
 
 
-class ReviewsList(generic.ListView):
-    """
-    This displays a list of approved reviews on the Browse page.
-    """
-    model = Review
-    queryset = Review.objects.filter(approved=True).order_by("-created_on")
-    template_name = "content/browse.html"
-    paginate_by = 6
-
-
 def review_detail(request, slug):
     """
-    This displays the full review on its own page, review_detail.
+    Displays the full review on its own page along with approved comments.
     """
     review = get_object_or_404(Review, slug=slug)
     comments = review.comments.filter(approved=True).order_by("-created_on")
     if request.method == 'POST' and request.user.is_authenticated:
-        comment_form = CommentForm(request.POST, user=request.user)
+        comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
             comment.review = review
+            comment.author = request.user
             comment.save()
+            messages.success(request, "Your comment has been submitted for review.")
             return redirect('review_detail', slug=slug)
     else:
         comment_form = CommentForm()
@@ -81,31 +71,39 @@ def review_detail(request, slug):
     )
 
 
+class ReviewsList(generic.ListView):
+    """
+    This displays a list of approved reviews on the Browse page.
+    """
+    model = Review
+    queryset = Review.objects.filter(approved=True).order_by("-created_on")
+    template_name = "content/browse.html"
+    paginate_by = 6
+
+
 @login_required
 def submit_comment(request, review_id):
     """
-    This handles the submission of a comment. It validates the form data,
+    Handles the submission of a comment. It validates the form data,
     creates a new comment and associates it with the review; sets the comment's
     author attribute from the logged-in user and marks the comment as
     unapproved. It redirects to the review_detail page with success or error
     messages.
     """
-    review = get_object_or_404(Review, pk=review_id)
-
+    review = get_object_or_404(Review, id=review_id)
     if request.method == 'POST':
-        form = CommentForm(request.POST)
+        form = CommentForm(request.POST, user=request.user)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.review = review
             comment.author = request.user
             comment.approved = False
             comment.save()
-
-            messages.success(request, "Your comment has been submitted.")
+            messages.success(request, "Your comment has been submitted for review.")
             return redirect('review_detail', slug=review.slug)
         else:
-            for field, errors in form.errors.items():
-                for error in errors:
-                    messages.error(request, f"{field}: {error}")
-
+            print(form.errors)
+            messages.error(request, "There was a problem with your comment submission.")
+    else:
+        messages.error(request, "Invalid request.")
     return redirect('review_detail', slug=review.slug)

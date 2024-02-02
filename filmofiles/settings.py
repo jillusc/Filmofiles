@@ -31,7 +31,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '8000-jillusc-filmofiles-akot92ere2.us2.codeanyapp.com',
-    'filmofiles-de31d62f91c0.herokuapp.com']
+    'filmofiles-de31d62f91c0.herokuapp.com',
+    '8000-jillusc-filmofiles-n4ng8me8oze.ws-eu107.gitpod.io'
+    ]
+
 
 
 # Application definition
@@ -98,7 +101,8 @@ DATABASES = {
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeanyapp.com",
-    "https://*.herokuapp.com"
+    "https://*.herokuapp.com",
+    "https://8000-jillusc-filmofiles-n4ng8me8oze.ws-eu107.gitpod.io"
 ]
 
 # Password validation
