@@ -1,9 +1,15 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
 <div class="container">
-<div class="row">
+    <div class="row">
         <div class="col-12 text-center mt-4 mb-4">
             <h2>Edit Review</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <h4 class="not-capitalized mb-4">{{ film_title|title }}</h4>
         </div>
     </div>
     <div class="row">

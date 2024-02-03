@@ -82,15 +82,16 @@ def edit_review(request, review_id):
         form = EditReviewForm(request.POST)
         if form.is_valid():
             review.content = form.cleaned_data['content']
+            review.slug = form.cleaned_data['slug']
             review.save()
             messages.success(request, 'Review successfully updated')
             return redirect('my_profile')
 
             return redirect('my_profile')
     else:
-        form = EditReviewForm(initial={'content': review.content})
+        form = EditReviewForm(initial={'content': review.content, 'slug': review.slug})
 
-    return render(request, 'core/edit_review.html', {'form': form})
+    return render(request, 'core/edit_review.html', {'form': form, 'film_title': review.film.film_title, 'slug': review.slug})
 
 
 @login_required

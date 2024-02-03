@@ -23,27 +23,6 @@ class ReviewForm(forms.ModelForm):
                 "different.")
         return new_slug
 
-    # def save(self, commit=True):
-    #     review = super().save(commit=False)
-
-    #     film_title = self.cleaned_data.get('film_title')
-    #     director = self.cleaned_data.get('director')
-    #     year = self.cleaned_data.get('year')
-    #     genre = self.cleaned_data.get('genre')
-
-    #     film, created = Film.objects.get_or_create(
-    #         film_title=film_title,
-    #         director=director,
-    #         year=year,
-    #         genre=genre
-    #     )
-
-    #     review.film = film
-
-    #     if commit:
-    #         review.save()
-    #     return review
-
 
 class CommentForm(forms.ModelForm):
     content = forms.CharField(

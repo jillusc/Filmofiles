@@ -57,6 +57,7 @@ class LogInForm(AuthenticationForm):
 
 class EditReviewForm(forms.Form):
     content = forms.CharField(widget=forms.Textarea, required=True)
+    slug = forms.SlugField(max_length=100, required=True)
 
 
 class EditCommentForm(forms.Form):
