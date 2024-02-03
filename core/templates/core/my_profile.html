@@ -27,19 +27,21 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6 offset-md-3 mb-4 text-center">
-            {% for review in reviews %}
-            <div class="mb-4">
+        {% for review in reviews %}
+            <div class="mb-4 col-md-6 col-lg-4 ">
                 <h4 class="not-capitalized mb-4">{{ review.film.film_title|title }}</h4>
                 <p><strong>Tagline: </strong>{{ review.slug }}</p>
                 <p><strong>Created: </strong>{{ review.created_on }}</p>
-                <p>"{{ review.content }}"</p>
-                <a href="{% url 'edit_review' review_id=review.id %}" class="btn btn-primary">Edit</a>
-                <a href="{% url 'confirm_delete_review' review_id=review.id %}" class="btn btn-primary">Delete</a>
+                <p class="my-reviews">"{{ review.content }}"</p>
+                {% if review.approved%}
+                    <a href="{% url 'edit_review' review_id=review.id %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'confirm_delete_review' review_id=review.id %}" class="btn btn-primary">Delete</a>
+                {% else %}
+                    <h4 class="not-capitalized wait-approve">Waiting for approval</h4>
+                {% endif%}
                 <hr>
             </div>
-            {% endfor %}
-        </div>
+        {% endfor %}
     </div>
 
     <div class="row" id="my-comments">
@@ -48,9 +50,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 offset-md-3 mb-4 text-center">
+        <!-- <div class="col-md-6 offset-md-3 mb-4 text-center"> -->
             {% for comment in comments %}
-            <div class="mb-4">
+            <div class="mb-4 col-md-6 col-lg-4">
                 <p><strong>Film Title: </strong>{{ comment.review.film.film_title }}</p>
                 <p><strong>Tagline: </strong>{{ comment.review.slug }}</p>
                 <p>Comment posted on {{ comment.created_on }}</p>
@@ -59,7 +61,7 @@
                 <a href="{% url 'confirm_delete_comment' comment_id=comment.id %}" class="btn btn-primary">Delete</a>
             </div>
             {% endfor %}
-        </div>
+        <!-- </div> -->
     </div>
     <div class="row" id="delete-account">
         <div class="col-6 mt-4 mb-4 text-center">

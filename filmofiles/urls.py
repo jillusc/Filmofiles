@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import get_object_or_404, redirect, render
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,3 +24,7 @@ urlpatterns = [
     path('core/', include('core.urls')),
     path('summernote/', include('django_summernote.urls')),
 ]
+
+
+handler404 = 'content.views.handler404'
+handler500 = 'content.views.handler500'

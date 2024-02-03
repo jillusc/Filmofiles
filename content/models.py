@@ -28,7 +28,7 @@ class Review(models.Model):
                             verbose_name='Tagline')
     content = models.TextField()
     rating = models.IntegerField(choices=[(i, i) for i in range(0, 11)],
-                                 verbose_name='Rating /10')
+                                 verbose_name='Rating / 10')
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     approved = models.BooleanField(default=False)
