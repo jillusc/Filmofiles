@@ -11,8 +11,12 @@ from content.models import Review, Comment
 def signup_view(request):
     """This view handles user registration.
     Upon successful registration, the user is automatically logged in and
-    redirected to the home page.
+    redirected to the home page. First, it checks if the user is already logged in
+    and in such cases prints a message and redirects to their profile page.
     """
+    if request.user.is_authenticated:
+        messages.info(request, "You are already logged in.")
+        return redirect('my_profile')
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
