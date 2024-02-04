@@ -20,7 +20,7 @@ def submit_review(request):
     """
     form = ReviewForm()
     if not request.user.is_authenticated:
-        messages.error(request, "You must be logged in to submit a review.")
+        messages.error(request, "Users need to be logged in to submit a review.")
     elif request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():

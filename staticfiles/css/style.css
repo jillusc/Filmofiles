@@ -302,3 +302,14 @@ select {
     font-size: 1.5rem;
     margin: 5px 5px;
 }
+
+
+@media screen and (max-width: 768px){
+        .site-tag {
+        font-size: 1rem;
+    }
+    
+    .site-tag-line {
+        font-size: 0.75rem;
+    }
+}
