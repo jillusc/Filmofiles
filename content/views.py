@@ -15,24 +15,24 @@ def home(request):
 
 def submit_review(request):
     """
-    This handles the submission of a film review. It processes and validates
-    the form data that is submitted, creates a new Film object if necessary,
-    associates the review with the film, and displays appropriate messages.
+    This handles the submission of a film review.
+    It processes and validates the form data that is submitted and displays appropriate messages.
     """
-    if request.method == 'POST':
+    form = ReviewForm()
+    if not request.user.is_authenticated:
+        messages.error(request, "You must be logged in to submit a review.")
+    elif request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
             review = form.save(commit=False)
             review.author = request.user
             review.approved = False
             review.save()
-            messages.success(request, "Your review is pending approval. Thank you!")
-            return redirect('browse', page=1)
-    else:
-        form = ReviewForm()
+            messages.success(request, "Your review is pending approval. Thank you!")         
+        else:
+            messages.error(request, "There was an error with your submission. Please check your information.")
 
     return render(request, "content/submit_review.html", {'form': form})
-
 
 
 def review_detail(request, slug):
