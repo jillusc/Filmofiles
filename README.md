@@ -114,3 +114,12 @@ The other custom model, Comment, allows users to comment on a review and ... is 
 The the database schema are illustrated by the diagram below:
 
 ## Testing
+
+## Credits
+https://docs.python.org/3/library/re.html for import re used to check for numbers, uppercase and lowercase letters, and special characters in passwords
+
+POPCORN Bild von <a href="https://pixabay.com/de/users/agoss-432408/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=898154">agoss</a> auf <a href="https://pixabay.com/de//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=898154">Pixabay</a>
+
+CINEMA Bild von <a href="https://pixabay.com/de/users/onkelglocke-12931647/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4609877">Andreas Glöckner</a> auf <a href="https://pixabay.com/de//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4609877">Pixabay</a>
+
+https://docs.djangoproject.com/en/3.2/_modules/django/forms/widgets/ for info on django forms not using textfield, but this being controlled instead by a widget
