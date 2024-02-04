@@ -26,22 +26,13 @@ def submit_review(request):
             review.author = request.user
             review.approved = False
             review.save()
-            messages.success(
-                request, "Your review is pending approval. Thank you!")
-
+            messages.success(request, "Your review is pending approval. Thank you!")
             return redirect('browse', page=1)
-        else:
-            print('error')
-            messages.error(
-                request, "There was an error with your submission. "
-                         "Please check your information.")
-            for field, errors in form.errors.items():
-                for error in errors:
-                    messages.error(request, f"{field}: {error}")
     else:
         form = ReviewForm()
 
     return render(request, "content/submit_review.html", {'form': form})
+
 
 
 def review_detail(request, slug):
