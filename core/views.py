@@ -106,7 +106,6 @@ def delete_review(request, review_id):
     return redirect('my_profile')
 
 
-
 @login_required
 def confirm_delete_review(request, review_id):
     """
@@ -142,9 +141,12 @@ def edit_comment(request, comment_id):
 def delete_comment(request, comment_id):
     """
     This view allows the author of a comment to delete it.
+    It 
     """
     comment = get_object_or_404(Comment, id=comment_id)
     comment.delete()
+    messages.success(
+                request, "Your comment has been deleted!")
     return redirect('my_profile')
 
 
@@ -156,15 +158,3 @@ def confirm_delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
     return render(request, 'core/confirm_delete_comment.html',
                   {'comment': comment})
-            
-
-@login_required
-def delete_account(request):
-    """
-    This view allows the user to delete their account. It redirects to the
-    home page.
-    """
-    user = request.user
-    user.delete()
-    logout(request)
-    return redirect('home')

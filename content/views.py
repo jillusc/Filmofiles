@@ -3,7 +3,7 @@ from django.template import RequestContext
 from django.views import generic
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Review, Comment
+from .models import Review, Comment, Film
 from .forms import ReviewForm, CommentForm
 
 def home(request):
@@ -50,6 +50,9 @@ def review_detail(request, slug):
     """
     review = get_object_or_404(Review, slug=slug)
     comments = review.comments.filter(approved=True).order_by("-created_on")
+    comment_count = comments.count()
+    comment_form = CommentForm()
+
     if request.method == 'POST' and request.user.is_authenticated:
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
@@ -60,6 +63,7 @@ def review_detail(request, slug):
             messages.success(request, "Your comment has been submitted for review.")
             return redirect('review_detail', slug=slug)
     else:
+        comment_count = comments.count()
         comment_form = CommentForm()
     return render(
         request,
@@ -68,6 +72,7 @@ def review_detail(request, slug):
             "review": review,
             "comments": comments,
             "comment_form": comment_form,
+            "comment_count": comment_count
         }
     )
 
@@ -100,7 +105,7 @@ def submit_comment(request, review_id):
             comment.author = request.user
             comment.approved = False
             comment.save()
-            messages.success(request, "Your comment has been submitted for review.")
+            messages.success(request, "Your comment is pending approval. Thank you!")
             return redirect('review_detail', slug=review.slug)
         else:
             print(form.errors)

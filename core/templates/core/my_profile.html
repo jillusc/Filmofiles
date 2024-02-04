@@ -15,9 +15,6 @@
             <h3><a href="#my-comments" class="subtle-link">comments</a></h3>
             <p> here.</p>
         </div>
-        <div class="col-12 mb-4 text-center">
-            <p>Want to <a href="#delete-account" class="subtle-link">delete your account</a>?</p>
-        </div>
     </div>
 
     <div class="row" id="my-reviews">
@@ -37,7 +34,7 @@
                     <a href="{% url 'edit_review' review_id=review.id %}" class="btn btn-primary">Edit</a>
                     <a href="{% url 'confirm_delete_review' review_id=review.id %}" class="btn btn-primary">Delete</a>
                 {% else %}
-                    <h4 class="not-capitalized wait-approve">Waiting for approval</h4>
+                    <h5 class="not-capitalized">Waiting for approval</h5>
                 {% endif%}
                 <hr>
             </div>
@@ -50,7 +47,6 @@
         </div>
     </div>
     <div class="row">
-        <!-- <div class="col-md-6 offset-md-3 mb-4 text-center"> -->
             {% for comment in comments %}
             <div class="mb-4 col-md-6 col-lg-4">
                 <p><strong>Film Title: </strong>{{ comment.review.film.film_title }}</p>
@@ -61,19 +57,6 @@
                 <a href="{% url 'confirm_delete_comment' comment_id=comment.id %}" class="btn btn-primary">Delete</a>
             </div>
             {% endfor %}
-        <!-- </div> -->
-    </div>
-    <div class="row" id="delete-account">
-        <div class="col-6 mt-4 mb-4 text-center">
-            <h3>My Account ...</h3>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 offset-md-3 mb-4 text-center">
-            <a href="{% url 'delete_account' %}" class="btn btn-danger">Delete My Account</a>
-        </div>
     </div>
 </div>
-</div>
-<script src="{% static 'js/script.js' %}"></script>
 {% endblock %}

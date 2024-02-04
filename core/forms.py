@@ -5,6 +5,7 @@ from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from content.models import Review
 import re
 
 
@@ -57,7 +58,12 @@ class LogInForm(AuthenticationForm):
 
 class EditReviewForm(forms.Form):
     content = forms.CharField(widget=forms.Textarea, required=True)
-    slug = forms.SlugField(max_length=100, required=True)
+    slug = forms.CharField(max_length=100, required=True, label="Tagline")
+
+    def clean_slug(self):
+        slug = self.cleaned_data.get('slug', '')
+        new_slug = slug.replace(' ', '-')
+        return new_slug
 
 
 class EditCommentForm(forms.Form):

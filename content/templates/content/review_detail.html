@@ -1,26 +1,18 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 <div class="container py-4 mt-5">
-    <div class="row mt-4 mb-4"></div>
-  <div
-    class="row col-8 offset-2 justify-content-center align-items-center mb-4"
-  >
+  <div class="row mt-4 mb-4"></div>
+
+  <div class="row col-8 offset-2 align-items-center mb-4">
     <div class="col-12 col-md-6">
       <div class="image-container">
-        {% if "placeholder" in review.featured_image.url %}
-        <img
-          class="img-fluid"
-          src="{% static 'images/popcorn-898154_1280.png' %}"
-          alt="placeholder image"
-        />
+        {% if "placeholder" in review.film.featured_image.url %}
+        <img class="card-img-top" src="{% static 'images/popcorn-898154_1280.png' %}" alt="placeholder image">
         {% else %}
-        <img
-          class="img-fluid"
-          src="{{ review.featured_image.url }}"
-          alt="{{ review.film.film_title }}"
-        />
+        <img class="card-img-top" src="{{ review.film.featured_image.url }}" alt="{{ film.film_title }}">
         {% endif %}
       </div>
     </div>
+
     <div class="col-12 col-md-6">
       <h3 class="not-capitalized">{{ review.film.film_title }}</h3><br>
       <p>Tagline:<strong> {{ review.slug }} </strong></p>
@@ -29,37 +21,53 @@
       <hr />
       <p class="review-detail-content">"{{ review.content }}"</p>
     </div>
+  </div>
 
-    <div class="row justify-content-center text-center mt-4">
-        <div class="col-6">
-        <h4>Comments</h4>
-        {% if user.is_authenticated %}
-        <form method="post" action="{% url 'submit_comment' review_id=review.id %}">
-          {% csrf_token %}
-          <textarea
-            name="content"
-            class="form-control mb-2"
-            placeholder="Leave a comment..."
-          ></textarea>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-        {% else %}
-        <textarea
-          name="content"
-          class="form-control mb-2"
-          placeholder="Leave a comment..."
-          disabled></textarea>
-        <p><small>
+  <div class="row col-8 offset-2 mb-4">
+    <div class="col-12 col-md-6">
+      <h4>Comments ({{ comment_count }})</h4>
+      <div>
+        {% for comment in comments %}
+        <div class="mt-4 mb-4">
+          <p>User: {{ comment.user_name }}</p>
+          <p>{{ comment.created_on }}</p>
+          <p>{{ comment.content }}</p>
+          <hr>
+        </div>
+        {% empty %}
+        <div>No comments yet.
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-8 offset-2 mb-4">
+    <div class="col-12 col-md-6">
+      <h4>Add a comment</h4>
+      {% if user.is_authenticated %}
+      <form method="post" action="{% url 'submit_comment' review_id=review.id %}">
+        {% csrf_token %}
+        <textarea name="content" class="form-control mb-2" placeholder="Leave a comment..."></textarea>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      {% else %}
+      <textarea name="content" class="form-control mb-2" placeholder="Leave a comment..." disabled></textarea>
+      <p><small>
           You need to be <a href="{% url 'login' %}" class="inline-link">logged in</a> to leave a comment.<br>
           If you're not signed up yet, <a href="{% url 'signup' %}" class="inline-link">register here.</a></small>
-        </p>
-        {% endif %}
+      </p>
+      {% endif %}
     </div>
-    <div class="row">
-        <div class="col-12 text-end mt-2">
-            <a href="#" id="back-link" class="subtle-link">Back</a>
-        </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-12 text-end mt-2">
+      <a href="#" id="back-link" class="subtle-link">Back</a>
     </div>
+  </div>
 </div>
 <script src="{% static 'js/script.js' %}"></script>
+
 {% endblock %}
