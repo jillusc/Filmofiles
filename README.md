@@ -164,20 +164,21 @@ The next page is where all of the published (approved by the Admin) film reviews
 ### Add review page
 
 This page presents a form in which Users can enter their review for submission. The fields include: Film (a dropdown menu which displays the film title and genre), Review content, Tagline, Rating /10 (a dropdown) and finally a Submit button. Upon successful submission, an appropriate message appears.<br><br>
-<img src="README%20images/page-submit-review.png">&nbsp;&nbsp;<img src="README%20images/page-submit-review2.png"><br>
+<img src="README%20images/page-submit_review.png">&nbsp;&nbsp;<img src="README%20images/page-submit_review2.png"><br>
 <img src="README%20images/success-message-review-pending-approval.png">
 
 ### Sign Up and Log In pages
 
 These pages both also present simple forms for their respective purposes. Upon successful signup, the homepage is loaded; upon successful login, the My Profile page.<br><br>
-<img src="README%20images/page-sign-up.png">&nbsp;&nbsp;<img src="README%20images/page-log-in.png">
+<img src="README%20images/page-sign_up.png">&nbsp;&nbsp;<img src="README%20images/page-log_in.png">
 
 ### My Profile page
 
 This page displays all of the registered Users' contributions to the site - all reviews and comments. Each item, except those reviews not yet approved, can be edited and deleted here. The Edit and Delete buttons direct to appropriate pages and Users can confirm deletions before losing their content. Upon successful updates or deletions, relevant messages are displayed.<br><br>
-<img src="README%20images/page-my-profile.png"><br>
-<img src="README%20images/page-edit-comment.png">&nbsp;&nbsp;<img src="README%20images/page-confirm-delete-review.png"><br>
-<img src="README%20images/success-message-edit-comment.png"><img src="README%20images/page-delete-review.png">&nbsp;&nbsp;<br>
+<img src="README%20images/page-my_profile.png"><br>
+<img src="README%20images/page-edit_comment.png"><br>
+<img src="README%20images/page-confirm_delete_review.png"><br>
+<img src="README%20images/success-message-edit-comment.png"><img src="README%20images/page-confirm_delete_review.png">&nbsp;&nbsp;<br>
 
 
 ## Testing
@@ -316,8 +317,7 @@ iv) Verify and delete any existing Postgres database add-on to avoid unnecessary
 - [Favicon.io](https://favicon.io/favicon-converter/) - used to generate a favicon
 - Chrome Developer Tools - used for general troubleshooting.
 - [ChatGPT](https://chat.openai.com) - used for general troubleshooting.
-- [W3C](https://www.w3.org) - used for HTML and CSS code validation.
-- [CI Python Linter](https://pep8ci.herokuapp.com/) - used for Python code validation.
+- [W3C](https://www.w3.org) - used for CSS code validation.
 
 
 ## Credits
