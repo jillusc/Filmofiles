@@ -23,7 +23,7 @@ AC1 - When a film review title is clicked, a new page opens displaying a full vi
 
 * View comments on a film review<br>
 As a User I can view comments on a film review so that I can read and follow a conversation about films that interest me.<br>
-AC1 - Given one or more user comments, the admin can view them.<br>
+AC1 - Given one or more user comments, the user can view them.<br>
 AC2 - The user can click on the comment thread to read the conversation.<br>
 
 * Register an account<br>
@@ -91,26 +91,31 @@ The Projects functionality in Github was used to manage the process of creating 
 
 ## Design
 
-The site's design was based on supporting the theme and the experience of film-watching.
+The site's design was based on supporting the theme and the experience of film-watching:
 
 ### Colour
 
-The colour scheme could be described as deep and rich as it features a charcoal grey and a dark teal colour; accent colours are a vibrant orange-red, golden yellow and cornflower blue. The colours were chosen to emulate the sense of being in a cinema, with subdued lighting and heavy, plush velvet curtains and seats. There is therefore a strong contrast between the background colours and accents, and the bright red text headings have a background shadow effect, resembling artificial light in the darkness. Regular text is off-white.<br><br>
+The colour scheme could be described as deep and rich as it features a charcoal grey and a dark teal colour; accent colours are a vibrant orange-red, golden yellow and cornflower blue. The colours were chosen to emulate the sense of being in a cinema, with subdued lighting and heavy, plush velvet curtains and seats. There is therefore a strong contrast between the background colours and accents, and the bright red text headings have a background shadow effect, resembling artificial light in the darkness. Regular text is off-white. Pure white is used for enhancing contrast in the logo, the site's tagline ("Film review community and social network for film lovers"), all links on hover and form fields.<br><br>
 <img src="README%20images/colours.png" height="50px">
 
 ### Imagery
 
 A static image on the home page in monochrome depicts a view of an empty cinema from the perspective of a viewer looking towards the screen.<br><br>
-<img src="README%20images/movie-theater-4609877_1920.webp" width="50%">
+<img src="README%20images/movie-theater-4609877_1920.webp" width="50%"><br><br>
 In the review cards, a placeholder image of cinema tickets and a bag of popcorn furthers the association with the cinema-going experience to appeal to the Users and reinforce the theme of the site.<br><br>
-<img src="README%20images/popcorn-898154_1280.webp" width="200px">
+<img src="README%20images/popcorn-898154_1280.webp" width="200px"><br><br>
 The rest of the imagery is in the form of the individual film poster covers.<br><br>
 <img src="README%20images/film-anatomy-of-a-fall.webp" width="180px">&nbsp;&nbsp;<img src="README%20images/film-inglourious-basterds.webp" width="180px">&nbsp;&nbsp;<img src="README%20images/film-the-village.webp" width="180px">
 
 ### Typography
 
-The site uses just two fonts, imported from Goole Fonts: Workbench for the Filmofiles logo and Montserrat for the remaining text. Workbench has a somewhat grainy character with horizontal streaks running through it, making the logo reminiscent of an old VHS label and thus tying in another medium of film-watching.<br><br>
+The site uses just two fonts, imported from Google Fonts: Workbench for the Filmofiles logo and Montserrat for the remaining text. Workbench has a somewhat grainy character with horizontal streaks running through it, making the logo reminiscent of an old VHS label and thus tying in another medium of film-watching.<br><br>
 <img src="README%20images/logo-nav-items.png">
+
+### Favicon
+
+From the initial letter of the logo, F, a favicon was created via favicon.io. This looks simple and bold, and will keep the name of the site and its related theme in visitors' vision and minds.<br><br>
+<img src="README%20images/favicon.png">
 
 
 ## Data Models
@@ -123,27 +128,27 @@ The database schema are illustrated by the ERD diagram below:<br><br>
 
 ## Features
 
-This is a Film Review application where Users read and write reviews and view contributions from others. They can engage with the community by posting comments on reviews.
+This is a Film Review application where Users read and write reviews and view contributions from others. They can engage with the community by posting comments on reviews and joining a conversation.
 
 - CRUD Functionality: registered Users have the freedom to create, read, update and delete all of their individual contributions to Filmofiles.
-- Admin Panel: through the Django admin panel, admin personnel have the control to manage User accounts and site content with the authority to approve Users' contributions for publishing and to remove content if necessary. Admins create Film objects for Users to review in order to maintain order and consistency and to prevent errors, keeping the database tidy.
+- Admin Panel: through the Django admin panel, Admin personnel have the control to manage User accounts and site content with the authority to approve Users' contributions for publishing and to remove content if necessary. Admins create Film objects for Users to review in order to maintain order and consistency and to prevent errors, keeping the database tidy.
 - User Registration and Authentication: Users can sign up, log in and out, and manage their profiles securely.
-- User Profiles: Each registered User has a profile page displaying their submitted reviews and comments. Items waiting for approval are marked accordingly.
+- User Profiles: each registered User has a profile page displaying their submitted reviews and comments. Items waiting for approval are marked accordingly.
 
 ### Features to implement
 
 - Responsive Design: the project is not yet optimised for smaller screens such as mobile devices.
 - Search: the app would benefit greatly from the ability for Users to search the database for films, e.g. by title, genre, director.
 - Filter: similarly, the addition of a filter system would be expected as the site and contents grow.
-- User Profile: additions and improvements to the my_profile area would enhance the experience and appeal for Users. For example: the option to delete their account, to upload a profile picture.
-- Social Media: the site could be extended to work like a social media app whereby Users could add Likes and mark other Users as Favourites.
-- Film objects: rather than inputting films to the database manually, this could be done using an API to automate the process, getting film data from sources like IMDb, for example.
+- User Profile: additions and improvements to the my_profile area would enhance the experience and appeal for Users. For example: the option to delete their account, to upload a profile picture, to change their username and password.
+- Social Media: the site could be extended to work like a social media app whereby Users could add Likes and mark films and other Users as Favourites.
+- Film objects: rather than inputting films to the database manually, this could be done using an API to automate the process, getting film data from sources like IMDb, for example. This would promote efficiency and accuracy, and allow for scalability and cost-effective operations.
 
 
 ### Header
 
 <strong>Logo</strong>: a logo was created using the Workbench font from Google fonts. It is positioned in the top left of the navigation bar and is linked to the home page for ease of navigation for the User.<br><br>
-<strong>Navigation bar</strong>: the navbar is present at the top of every page and displays all links to the other pages. On hover, these links become highlighted via a darkening of the background. The Account link is a dropdown menu which includes Sign Up and Log In. When the User is logged in, the dropdown menu links change to the My Profile and Log Out pages. Additionally, on medium screens and above, a line of text show "Logged in as <username>". On smaller screens, the navigation items reduce into a hamburger menu.<br><br>
+<strong>Navigation bar</strong>: the navbar is present at the top of every page and displays all links to the other pages. On hover, these links become highlighted via a darkening of the background and a lightening of the text. The Account link is a dropdown menu which includes Sign Up and Log In. When the User is logged in, the dropdown menu links change to the My Profile and Log Out pages. Additionally, on medium screens and above, a line of text shows "Logged in as ((username))". On smaller screens, the navigation items reduce into a hamburger menu.<br><br>
 <img src="README%20images/logo-nav-items.png">&nbsp;<img src="README%20images/navbar-logged-in.png">
 
 ### Footer
@@ -158,18 +163,18 @@ The homepage has a dramatic backdrop created by the image of the cinema interior
 
 ### Browse page
 
-The next page is where all of the published (approved by the Admin) film reviews are stored, again in cards. Users can see a summary in the form of an image, either the film poster or a placeholder image of popcorn, the film's title, the review's slug (labelled as Tagline to be more user-friendly), the author's name of the review and the date, and finally a READ button which links to the review_detail page for that specfic review. The page has pagination and displays six review cards per pages. The pagination links change from red to yellow on hover to show they are interactive elements.<br><br>
+The next page is where all of the published (approved by the Admin) film reviews are stored, again in cards. Users can see a summary in the form of an image, either the film poster or a placeholder image of popcorn; the film's title, the review's slug, the review author's name, the date, and finally a READ button which links to the review_detail page for that particular review. The page has pagination and displays six review cards per page. The pagination links change from red to yellow on hover to show they are interactive elements.<br><br>
 <img src="README%20images/page-browse.png">
 
 ### Add review page
 
-This page presents a form in which Users can enter their review for submission. The fields include: Film (a dropdown menu which displays the film title and genre), Review content, Tagline, Rating /10 (a dropdown) and finally a Submit button. Upon successful submission, an appropriate message appears.<br><br>
+This page presents a form in which Users can enter their review for submission. The fields include: Film (a dropdown menu which displays the film title and genre), Review content, slug (labelled as Tagline to be more user-friendly), Rating /10 (a dropdown) and finally a Submit button. Upon successful submission, an appropriate message appears.<br><br>
 <img src="README%20images/page-submit_review.png">&nbsp;&nbsp;<img src="README%20images/page-submit_review2.png"><br>
 <img src="README%20images/success-message-review-pending-approval.png">
 
 ### Sign Up and Log In pages
 
-These pages both also present simple forms for their respective purposes. Upon successful signup, the homepage is loaded; upon successful login, the My Profile page.<br><br>
+These pages both also present simple forms for their respective purposes. Upon successful signup, the homepage is loaded; upon successful login, the My Profile page. Both redirected pages steer the User towards establishing their next options.<br><br>
 <img src="README%20images/page-sign_up.png">&nbsp;&nbsp;<img src="README%20images/page-log_in.png">
 
 ### My Profile page
@@ -178,7 +183,7 @@ This page displays all of the registered Users' contributions to the site - all 
 <img src="README%20images/page-my_profile.png"><br>
 <img src="README%20images/page-edit_comment.png"><br>
 <img src="README%20images/page-confirm_delete_review.png"><br>
-<img src="README%20images/success-message-edit-comment.png"><img src="README%20images/page-confirm_delete_review.png">&nbsp;&nbsp;<br>
+<img src="README%20images/success-message-edit-comment.png"><br>
 
 
 ## Testing
@@ -200,29 +205,29 @@ To deploy this page to Heroku from its GitHub repository, the following steps we
 1. SET UP THE DIRECTORY:<br>
 i) Open a new workspace from a repository that uses the full CI template.<br>
 ii) Install the Django Python package:<br>
-pip3 install Django~=4.2.1<br>
+	pip3 install Django~=4.2.1<br>
 iii) Add Django to requirements.txt:<br>
-pip3 freeze --local > requirements.txt (Verify the installation.)<br>
+	pip3 freeze --local > requirements.txt (Verify the installation.)<br>
 
-3. CREATE A PROJECT:<br>
+2. CREATE A PROJECT:<br>
 i) Create a Django project named "filmofiles":<br>
-django-admin startproject filmofiles .<br>
+	django-admin startproject filmofiles .<br>
 ii) Start the Django server:<br>
-python3 manage.py runserver<br>
+	python3 manage.py runserver<br>
 iii) Copy the hostname from the browser following "Invalid HTTP_HOST header."<br>
 iv) In my_project/settings.py, paste this hostname between the square brackets of ALLOWED_HOSTS and save.<br>
 v) Refresh the browser to view a basic Django project.<br>
 vi) Stop the server using ctrl+c in the terminal.<br>
 
-4. CREATE AN APP:<br>
+3. CREATE AN APP:<br>
 i) Create a Django app named "core":<br>
 python3 manage.py startapp core (Verify the directory was created.)<br>
 ii) Add this to the list of INSTALLED_APPS in settings.py:<br>
-'core',
+	'core',
 
 #### JUMP to ElephantSQL:
 
-X. Create a database:<br>
+4. Create a database:<br>
 i) ElephantSQL Setup:<br>
 	Create a new instance of PostgreSQL:<br>
 	Set up the plan (name, tiny turtle plan, select region).<br>
@@ -232,37 +237,37 @@ i) ElephantSQL Setup:<br>
 
 #### JUMP back to IDE:
 
-4. SETUP ENVIRONMENT VARIABLES AND SECRET KEY:<br>
+5. SETUP ENVIRONMENT VARIABLES AND SECRET KEY:<br>
 i) Create a file named env.py at the top level of the project.<br>
 ii) Add it to .gitignore.<br>
 iii) Import os and set the secret_key:<br>
-import os<br>
-os.environ.setdefault("SECRET_KEY", "(value)")<br>
+	import os<br>
+	os.environ.setdefault("SECRET_KEY", "(value)")<br>
 iv) Update settings.py to use the secret key:<br>
-SECRET_KEY = os.environ.get("SECRET_KEY")<br>
+	SECRET_KEY = os.environ.get("SECRET_KEY")<br>
 
-5. CONNECT DATABASE TO CODE in env & settings:<br>
+6. CONNECT DATABASE TO CODE in env & settings:<br>
 i) Set DATABASE_URL in env.py using the ElephantSQL URL.<br>
 ii) Install the 2 packages required to connect to your database:<br>
-pip3 install dj-database-url~=0.5 psycopg2~=2.9<br>
+	pip3 install dj-database-url~=0.5 psycopg2~=2.9<br>
 iii) Add them to requirements.txt:<br>
-pip3 freeze --local > requirements.txt<br>
+	pip3 freeze --local > requirements.txt<br>
 iv) In settings.py, import the necessary packages:<br>
-import os<br>
-import dj_database_url<br>
+	import os<br>
+	import dj_database_url<br>
 v) And add underneath;<br>
-if os.path.isfile('env.py'):<br>
-    import env<br>
+	if os.path.isfile('env.py'):<br>
+	    import env<br>
 vi) Comment out the local SQlite3 database and add:<br>
-DATABASES = {<br>
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))<br>
-}
+	DATABASES = {<br>
+	    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))<br>
+	}
 vii) Migrate database:<br>
-python3 manage.py migrate<br>
+	python3 manage.py migrate<br>
 
 #### JUMP to HEROKU:
 
-a. CREATE THE HEROKU APP:<br>
+7. CREATE THE HEROKU APP:<br>
 i) Visit your Heroku dashboard and create a new app with a unique name.<br>
 ii) In the Settings tab, add a config var with key DISABLE_COLLECTSTATIC and value 1 to prevent static file uploads during the build.<br>
 iii) Add the SECRET_KEY as a config var.<br>
@@ -271,19 +276,19 @@ v) Remove Heroku's PostgreSQL DATABASE_URL if present.<br>
 
 #### JUMP back to IDE:
 
-6. UPDATE CODE FOR DEPLOYMENT:<br>
+8. UPDATE CODE FOR DEPLOYMENT:<br>
 i) Install a production-ready web server for Heroku:<br>
-pip3 install gunicorn~=20.1<br>
+	pip3 install gunicorn~=20.1<br>
 ii) Add gunicorn==20.1.0 to requirements:<br>
-pip3 freeze --local > requirements.txt<br>
+	pip3 freeze --local > requirements.txt<br>
 iii) Create a Procfile at the project's root and enter on line 1:<br>
-web: gunicorn filmofiles.wsgi<br>
+	web: gunicorn filmofiles.wsgi<br>
 iii) In settings.py, set DEBUG=False, then add your Heroku hostname to ALLOWED_HOSTS<br>
 iv) Add, commit and push changes.<br>
 
 #### JUMP to HEROKU:
 
-b. DEPLOY:<br>
+9. DEPLOY:<br>
 i) Return to the Heroku dashboard, go to the Deploy tab, and click to connect to GitHub.<br>
 ii) Enter your GitHub repo, deploy the main branch manually, and monitor the build output in the Activity tab.<br>
 iii) In the Resources tab, select an eco dyno for lightweight container deployment.<br>
@@ -305,16 +310,15 @@ iv) Verify and delete any existing Postgres database add-on to avoid unnecessary
 - [ElephantSQL](https://www.elephantsql.com) - used to create the PostgreSQL database for this app.
 - [Heroku](https://dashboard.heroku.com/login) - used as a cloud-based platform to deploy the site.
 - [Django](https://www.djangoproject.com) - used as a Python framework.
+- [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction)- used as a CSS Framework.
 - [Gunicorn](https://gunicorn.org) - used as a production-ready web server for Heroku.
 - [WhiteNoise](https://whitenoise.readthedocs.io/en/stable/django.html) - used for serving the static files.
-- [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction)- used as a CSS Framework.
-- [Django-allauth](https://allauth.org) - used for authentication of user accounts.
 - [Summernote](https://summernote.org) - used as a WYSIWYG editor for users' posts.
 - [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest) - used to manage Django Forms.
 - [Cloudinary](https://cloudinary.com) - used to host images.
-- [Font Awesome](https://fontawesome.com) - used for (social media) icons.
+- [Font Awesome](https://fontawesome.com) - used for icons.
 - [Convertio](https://) - used to convert images to webp files.
-- [Favicon.io](https://favicon.io/favicon-converter/) - used to generate a favicon
+- [Favicon.io](https://favicon.io/favicon-converter/) - used to generate a favicon.
 - Chrome Developer Tools - used for general troubleshooting.
 - [ChatGPT](https://chat.openai.com) - used for general troubleshooting.
 - [W3C](https://www.w3.org) - used for CSS code validation.
@@ -322,13 +326,13 @@ iv) Verify and delete any existing Postgres database add-on to avoid unnecessary
 
 ## Credits
 
-Code Institute - I Think Therefore I Blog walkthrough project
-[Python docs](https://docs.python.org/3/library/re.html) - for import re (used to check for numbers, uppercase and lowercase letters, and special characters in passwords)
-[Django docs](https://docs.djangoproject.com/en/3.2/_modules/django/forms/widgets/) - for info on django forms (widgets)
+Code Institute - I Think Therefore I Blog walkthrough project.<br>
+[Python docs](https://docs.python.org/3/library/re.html) - for import re (used to check for numbers, uppercase and lowercase letters, and special characters in passwords).<br>
+[Django docs](https://docs.djangoproject.com/en/3.2/_modules/django/forms/widgets/) - for info on django forms (widgets).
 
 #### Images:
-[Pixabay](https://pixabay.com/de/users/onkelglocke-12931647/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4609877)) - for cinema background image
-[Pixabay](https://pixabay.com/de/users/agoss-432408/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=898154) - for popcorn placeholder image 
+[Pixabay](https://pixabay.com/de/users/onkelglocke-12931647/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4609877) - for cinema background image.<br>
+[Pixabay](https://pixabay.com/de/users/agoss-432408/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=898154) - for popcorn placeholder image.
 
 
 ## Acknowledgments
