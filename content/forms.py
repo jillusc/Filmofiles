@@ -14,6 +14,7 @@ class ReviewForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ReviewForm, self).__init__(*args, **kwargs)
         self.fields['slug'] = forms.CharField(required=True, label="Tagline")
+
     class Meta:
         model = Review
         fields = ['film', 'slug', 'content', 'rating']

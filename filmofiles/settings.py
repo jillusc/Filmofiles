@@ -33,8 +33,8 @@ ALLOWED_HOSTS = [
     '8000-jillusc-filmofiles-akot92ere2.us2.codeanyapp.com',
     'filmofiles-de31d62f91c0.herokuapp.com',
     '8000-jillusc-filmofiles-n4ng8me8oze.ws-eu107.gitpod.io',
-    '8000-jillusc-filmofiles-n4ng8me8oze.ws-eu108.gitpod.io'    
-    
+    '8000-jillusc-filmofiles-n4ng8me8oze.ws-eu108.gitpod.io'
+
 ]
 
 # Application definition

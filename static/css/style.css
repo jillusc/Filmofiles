@@ -231,7 +231,7 @@ select {
     color: #FFF;
 }
 
-#card-link {
+#card-link-browse, #card-link-signup {
     text-decoration: none;
     color: var(--primary-color);
     outline: none;

@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Review, Comment, Film
 from .forms import ReviewForm, CommentForm
 
+
 def home(request):
     """
     This renders the home page.
@@ -16,11 +17,13 @@ def home(request):
 def submit_review(request):
     """
     This handles the submission of a film review.
-    It processes and validates the form data that is submitted and displays appropriate messages.
+    It processes and validates the form data that is submitted
+    and displays appropriate messages.
     """
     form = ReviewForm()
     if not request.user.is_authenticated:
-        messages.error(request, "Users need to be logged in to submit a review.")
+        messages.error(request, "Users need to be logged in "
+                                "to submit a review.")
     elif request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -28,16 +31,21 @@ def submit_review(request):
             review.author = request.user
             review.approved = False
             review.save()
-            messages.success(request, "Your review is pending approval. Thank you!")         
+            messages.success(request, "Your review is pending "
+                                      "approval. Thank you!")
         else:
-            messages.error(request, "There was an error with your submission. Please check your information.")
+            messages.error(request, "There was an error with your "
+                                    "submission. Please check your "
+                                    "information.")
 
     return render(request, "content/submit_review.html", {'form': form})
 
 
 def review_detail(request, slug):
     """
-    Displays the full review on its own page along with approved comments.
+    This displays the full review on its own page along with
+    comments box and approved comments. It handles the submission
+    of comments, including verifiying the user is first logged in.
     """
     review = get_object_or_404(Review, slug=slug)
     comments = review.comments.filter(approved=True).order_by("-created_on")
@@ -51,7 +59,8 @@ def review_detail(request, slug):
             comment.review = review
             comment.author = request.user
             comment.save()
-            messages.success(request, "Your comment has been submitted for review.")
+            messages.success(request, "Your comment has been submitted "
+                             "for review.")
             return redirect('review_detail', slug=slug)
     else:
         comment_count = comments.count()
@@ -81,10 +90,11 @@ class ReviewsList(generic.ListView):
 @login_required
 def submit_comment(request, review_id):
     """
-    Handles the submission of a comment. It validates the form data,
-    creates a new comment and associates it with the review; sets the comment's
-    author attribute from the logged-in user and marks the comment as
-    unapproved. It redirects to the review_detail page with success or error
+    This view handles the submission of a comment. It validates
+    the form data, creates a new comment and associates it with
+    the review; sets the comment's author attribute from the
+    logged-in user and marks the comment as unapproved. It
+    redirects to the review_detail page with success or error
     messages.
     """
     review = get_object_or_404(Review, id=review_id)
@@ -96,15 +106,16 @@ def submit_comment(request, review_id):
             comment.author = request.user
             comment.approved = False
             comment.save()
-            messages.success(request, "Your comment is pending approval. Thank you!")
+            messages.success(request, "Your comment is pending approval. "
+                             "Thank you!")
             return redirect('review_detail', slug=review.slug)
         else:
             print(form.errors)
-            messages.error(request, "There was a problem with your comment submission.")
+            messages.error(request, "There was a problem with your "
+                                    "comment submission.")
     else:
         messages.error(request, "Invalid request.")
     return redirect('review_detail', slug=review.slug)
-
 
 
 def handler404(request, exception, template_name="404.html"):
