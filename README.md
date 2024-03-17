@@ -13,21 +13,21 @@ The live link can be found here - [FILMOFILES](https://filmofiles-de31d62f91c0.h
 #### Epic: General User Experience
 
 * Browse film reviews<br>
-As a User I can view a paginated list of film review posts in order to select one to view in full.<br>
+As a user I can view a paginated list of film review posts in order to select one to view in full.<br>
 AC1 - When a user clicks a 'Browse' link in the main page a list of contributed film reviews is displayed, newest first.<br>
 AC2 - The user sees all film review posts with pagination.<br>
 
 * Read a film review<br>
-As a User I can click on a film review post in order to read the full content.<br>
+As a user I can click on a film review post in order to read the full content.<br>
 AC1 - When a film review title is clicked, a new page opens displaying a full view of the film review.<br>
 
 * View comments on a film review<br>
-As a User I can view comments on a film review so that I can read and follow a conversation about films that interest me.<br>
+As a user I can view comments on a film review so that I can read and follow a conversation about films that interest me.<br>
 AC1 - Given one or more user comments, the user can view them.<br>
 AC2 - The user can click on the comment thread to read the conversation.<br>
 
 * Register an account<br>
-As a User I can register an account so that I can make contributions and therefore have an active role in the site.<br>
+As a user I can register an account so that I can make contributions and therefore have an active role in the site.<br>
 AC1 - Given a (valid) username and password, a user can register an account.<br>
 AC2 - The user can log in.<br>
 AC3 - Given a logged-in user, they can post a film review and/or leave a comment on a film review.<br>
@@ -36,38 +36,38 @@ AC4 - Given a logged in user, they can log out.<br>
 #### Epic: Registered User Profile
 
 * Contribute a film review<br>
-As a Registered User I can submit a film review so that I can participate in the film review community.<br>
+As a registered user I can submit a film review so that I can participate in the film review community.<br>
 AC1 - Fields for completion: title, genre, year, director name, image.<br>
 AC2 - When a registered user's film review is approved, it should be displayed to the site.<br>
 
 * Contribute a comment<br>
-As a Registered User I can leave comments on a film review so that I can contribute to a conversation.<br>
+As a registered user I can leave comments on a film review so that I can contribute to a conversation.<br>
 AC1 - When a user's comment is approved, it should be displayed below the review.<br>
 AC2 - Users can reply to existing comments to continue the conversation.<br>
 AC3 - If more than one comment is present, a threaded conversation is established.<br>
 
 * Modify or delete my contributions<br>
-As a Registered User I can edit and delete my film reviews and comments so that I can control my contributions, e.g. correct mistakes, embellish content and remove altogether.<br>
+As a registered user I can edit and delete my film reviews and comments so that I can control my contributions, e.g. correct mistakes, embellish content and remove altogether.<br>
 AC1 - Given a logged in user, they can edit their film reviews/comments.<br>
 AC2 - Given a logged in user, they can delete their film reviews/comments.<br>
 
 * View my profile page<br>
-As a Registered User I can view a profile page that displays the film reviews and comments I have submitted so that I can keep track of my contributions.<br>
+As a registered user I can view a profile page that displays the film reviews and comments I have submitted so that I can keep track of my contributions.<br>
 AC1 - A profile page opens when a relevant link is clicked.<br>
 AC2 - Lists of "my film reviews" and "my comments" are displayed with items ordered newest first.<br>
 AC3 - Items in the list are all clickable links to the relevant places/pages.<br>
 
 #### EPIC: Site Administration
 
-* Manage contributions as an Admin<br>
-As an Admin I can create, read, update and delete film reviews and comments so that the site's content aligns with the vision of the site owner and maintains quality and relevance.<br>
+* Manage contributions as an admin<br>
+As an admin I can create, read, update and delete film reviews and comments so that the site's content aligns with the vision of the site owner and maintains quality and relevance.<br>
 AC1 - Admin can create film reviews and comments.<br>
 AC2 - Admin can view all film reviews and comments, including pending and approved ones.<br>
 AC3 - Admin can edit film reviews and comments.<br>
 AC4 - Admin can delete film reviews and comments.<br>
 
-* Control publication of content as an Admin<br>
-As an Admin I can approve or disallow film reviews and comments so that I can responsibly manage the content.<br>
+* Control publication of content as an admin<br>
+As an admin I can approve or disallow film reviews and comments so that I can responsibly manage the content.<br>
 AC1 - Admin can approve film reviews and comments.<br>
 AC2 - Admin can disallow film reviews and comments.<br>
 
@@ -76,7 +76,7 @@ AC2 - Admin can disallow film reviews and comments.<br>
 The following user story was scoped out of the project due to time constraints:
 
 * Search for film reviews<br>
-As a User I can search for a film by title, genre, year and director so that I can read reviews of films of my choosing.<br>
+As a user I can search for a film by title, genre, year and director so that I can read reviews of films of my choosing.<br>
 AC1 - A search bar is displayed with an enter key.<br>
 AC2 - The user can input a case-insensitive search criterion (title, genre, year, director name).<br>
 AC3 - Upon submission, the database is queried and returns a list of film titles matching the submitted search criterion.<br>
@@ -86,7 +86,7 @@ AC5 - If there is no match, an appropriate message is displayed.<br>
 
 ## Agile Methodology
 
-The Projects functionality in Github was used to manage the process of creating the site using an Agile approach, with a kanban board for tracking the progress and completion of User Stories. Github Issues were created for each User Story with defined acceptance criteria to make the execution as straightforward as possible.
+The Projects functionality in Github was used to manage the process of creating the site using an Agile approach, with a kanban board for tracking the progress and completion of user stories. Github Issues were created for each user story with defined acceptance criteria to make the execution as straightforward as possible.
 
 
 ## Design
@@ -96,31 +96,31 @@ The site's design was based on supporting the theme and the experience of film-w
 ### Colour
 
 The colour scheme could be described as deep and rich as it features a charcoal grey and a dark teal colour; accent colours are a vibrant orange-red, golden yellow and cornflower blue. The colours were chosen to emulate the sense of being in a cinema, with subdued lighting and heavy, plush velvet curtains and seats. There is therefore a strong contrast between the background colours and accents, and the bright red text headings have a background shadow effect, resembling artificial light in the darkness. Regular text is off-white. Pure white is used for enhancing contrast in the logo, the site's tagline ("Film review community and social network for film lovers"), all links on hover and form fields.<br><br>
-<img src="README%20images/colours.png" height="50px">
+<img src="README%20images/colours.png" height="320px">
 
 ### Imagery
 
-A static image on the home page in monochrome depicts a view of an empty cinema from the perspective of a viewer looking towards the screen.<br><br>
-<img src="README%20images/movie-theater-4609877_1920.webp" width="50%"><br><br>
-In the review cards, a placeholder image of cinema tickets and a bag of popcorn furthers the association with the cinema-going experience to appeal to the Users and reinforce the theme of the site.<br><br>
+A static image on the home page in monochrome depicts a view of an empty cinema from the perspective of a viewer looking towards the screen:<br><br>
+<img src="README%20images/movie-theater-4609877_1920.webp" width="60%"><br><br>
+In the review cards, a placeholder image of cinema tickets and a bag of popcorn furthers the association with the cinema-going experience to appeal to the users and reinforce the theme of the site:<br><br>
 <img src="README%20images/popcorn-898154_1280.webp" width="200px"><br><br>
-The rest of the imagery is in the form of the individual film poster covers.<br><br>
+The rest of the imagery is in the form of the individual film poster covers:<br><br>
 <img src="README%20images/film-anatomy-of-a-fall.webp" width="180px">&nbsp;&nbsp;<img src="README%20images/film-inglourious-basterds.webp" width="180px">&nbsp;&nbsp;<img src="README%20images/film-the-village.webp" width="180px">
 
 ### Typography
 
-The site uses just two fonts, imported from Google Fonts: Workbench for the Filmofiles logo and Montserrat for the remaining text. Workbench has a somewhat grainy character with horizontal streaks running through it, making the logo reminiscent of an old VHS label and thus tying in another medium of film-watching.<br><br>
+The site uses just two fonts, imported from Google Fonts: Workbench for the Filmofiles logo and Montserrat for the remaining text. Workbench has a somewhat grainy character with horizontal streaks running through it, making the logo reminiscent of an old VHS label and thus tying in another medium of film-watching:<br><br>
 <img src="README%20images/logo-nav-items.png">
 
 ### Favicon
 
-From the initial letter of the logo, F, a favicon was created via favicon.io. This looks simple and bold, and will keep the name of the site and its related theme in visitors' vision and minds.<br><br>
+From the initial letter of the logo, F, a favicon was created via favicon.io. This looks simple and bold, and will keep the name of the site and its related theme in visitors' vision and minds:<br><br>
 <img src="README%20images/favicon.png">
 
 
 ## Data Models
 
-This project follows Object-Oriented Programming principles and employs Django's Class-Based Generic Views. It includes three custom models: Film, representing film details (title, director, genre, year, image); Review, for film reviews with one-to-many relationships to the User & Film models and an implicit many-to-many relationship with the Comment model; and Comment with one-to-many relationships to User and Review models, which allows registered Users to post comments on reviews.
+This project follows Object-Oriented Programming principles and employs Django's Class-Based Generic Views. It includes three custom models: Film, representing film details (title, director, genre, year, image); Review, for film reviews with one-to-many relationships to the User & Film models and an implicit many-to-many relationship with the Comment model; and Comment with one-to-many relationships to User and Review models, which allows registered users to post comments on reviews.
 
 The database schema are illustrated by the ERD diagram below:<br><br>
 <img src="README%20images/ERD.png">
@@ -128,58 +128,59 @@ The database schema are illustrated by the ERD diagram below:<br><br>
 
 ## Features
 
-This is a Film Review application where Users read and write reviews and view contributions from others. They can engage with the community by posting comments on reviews and joining a conversation.
+This is a Film Review application where users read and write reviews and view contributions from others. They can engage with the community by posting comments on reviews and joining a conversation.
 
-- CRUD Functionality: registered Users have the freedom to create, read, update and delete all of their individual contributions to Filmofiles.
-- Admin Panel: through the Django admin panel, Admin personnel have the control to manage User accounts and site content with the authority to approve Users' contributions for publishing and to remove content if necessary. Admins create Film objects for Users to review in order to maintain order and consistency and to prevent errors, keeping the database tidy.
-- User Registration and Authentication: Users can sign up, log in and out, and manage their profiles securely.
-- User Profiles: each registered User has a profile page displaying their submitted reviews and comments. Items waiting for approval are marked accordingly.
+- CRUD Functionality: registered users have the freedom to create, read, update and delete all of their individual contributions to Filmofiles.
+- Admin Panel: through the Django admin panel, admin personnel have the control to manage user accounts and site content with the authority to approve users' contributions for publishing and to remove content if necessary. Admins create Film objects for users to review in order to maintain order and consistency and to prevent errors, keeping the database tidy.
+- User Registration and Authentication: users can sign up, log in and out, and manage their profiles securely.
+- User Profiles: each registered user has a profile page displaying their submitted reviews and comments. Items waiting for approval are marked accordingly.
 
 ### Features to implement
 
 - Responsive Design: the project is not yet optimised for smaller screens such as mobile devices.
-- Search: the app would benefit greatly from the ability for Users to search the database for films, e.g. by title, genre, director.
+- Search: the app would benefit greatly from the ability for users to search the database for films, e.g. by title, genre, director.
 - Filter: similarly, the addition of a filter system would be expected as the site and contents grow.
-- User Profile: additions and improvements to the my_profile area would enhance the experience and appeal for Users. For example: the option to delete their account, to upload a profile picture, to change their username and password.
-- Social Media: the site could be extended to work like a social media app whereby Users could add Likes and mark films and other Users as Favourites.
-- Film objects: rather than inputting films to the database manually, this could be done using an API to automate the process, getting film data from sources like IMDb, for example. This would promote efficiency and accuracy, and allow for scalability and cost-effective operations.
+- User Profile: additions and improvements to the my_profile area would enhance the experience and appeal for users. For example: the option to delete their account, to upload a profile picture, to change their username and password.
+- Social Media: the site could be extended to work like a social media app whereby users could add Likes and mark films and other users as Favourites.
+- Film Objects: rather than inputting films to the database manually, this could be done using an API to automate the process, getting film data from sources like IMDb, for example. This would promote efficiency and accuracy, and allow for scalability and cost-effective operations.
 
 
 ### Header
 
-<strong>Logo</strong>: a logo was created using the Workbench font from Google fonts. It is positioned in the top left of the navigation bar and is linked to the home page for ease of navigation for the User.<br><br>
-<strong>Navigation bar</strong>: the navbar is present at the top of every page and displays all links to the other pages. On hover, these links become highlighted via a darkening of the background and a lightening of the text. The Account link is a dropdown menu which includes Sign Up and Log In. When the User is logged in, the dropdown menu links change to the My Profile and Log Out pages. Additionally, on medium screens and above, a line of text shows "Logged in as ((username))". On smaller screens, the navigation items reduce into a hamburger menu.<br><br>
-<img src="README%20images/logo-nav-items.png">&nbsp;<img src="README%20images/navbar-logged-in.png">
+<strong>Logo</strong>: a logo was created using the Workbench font from Google fonts. It is positioned in the top left of the navigation bar and is linked to the home page for ease of navigation for the user.<br><br>
+<strong>Navigation bar</strong>: the navbar is present at the top of every page and displays all links to the other pages. On hover, these links become highlighted via a darkening of the background and a lightening of the text. The Account link is a dropdown menu which includes Sign Up and Log In. When the user is logged in, the dropdown menu links change to the My Profile and Log Out pages. Additionally, on medium screens and above, a line of text shows "Logged in as ((username))". On smaller screens, the navigation items reduce into a hamburger menu.<br><br>
+<img src="README%20images/logo-nav-items.png" width="900px">
+<img src="README%20images/navbar-logged-in.png" width="900px">
 
 ### Footer
 
-A simple footer was created to mirror the header style. It includes link icons to Instagram, Facebook and YouTube. These can be set up to open a separate browser tab to avoid leading the User away from the site.<br><br>
+A simple footer was created to mirror the header style. It includes link icons to Instagram, Facebook and YouTube. These can be set up to open a separate browser tab to avoid leading the user away from the site.<br><br>
 <img src="README%20images/footer.png">
 
 ### Home page
 
-The homepage has a dramatic backdrop created by the image of the cinema interior. On top are textual headings and three cards which establish the colour scheme. The information in the cards lets the site visitors know what the application does and is for, in a short phrase with a filmroll icon from Font Awesome: first, the BROWSE card informs the User that they can navigate through published film reviews, with the word itself linking to the Browse page in case the User expects it; second, the READ card encourages the User to sample the content; and third, the JOIN card prompts the User to become fully involved and interact with other like-minded film fans - this word also functions as a link and will load the Sign Up page. Underneath the cards is a bright coloured button which means that signing up is only one click away and is easy for the User to navigate to.<br><br>
+The homepage has a dramatic backdrop created by the image of the cinema interior. On top are textual headings and three cards which establish the colour scheme. The information in the cards lets the site visitors know what the application does and is for, in a short phrase with a filmroll icon from Font Awesome: first, the BROWSE card informs the user that they can navigate through published film reviews, with the word itself linking to the Browse page in case the user expects it; second, the READ card encourages the user to sample the content; and third, the JOIN card prompts the user to become fully involved and interact with other like-minded film fans - this word also functions as a link and will load the Sign Up page. Underneath the cards is a bright coloured button which means that signing up is only one click away and is easy for the user to navigate to.<br><br>
 <img src="README%20images/page-home.png">
 
 ### Browse page
 
-The next page is where all of the published (approved by the Admin) film reviews are stored, again in cards. Users can see a summary in the form of an image, either the film poster or a placeholder image of popcorn; the film's title, the review's slug, the review author's name, the date, and finally a READ button which links to the review_detail page for that particular review. The page has pagination and displays six review cards per page. The pagination links change from red to yellow on hover to show they are interactive elements.<br><br>
+The next page is where all of the published (approved by the admin) film reviews are stored, again in cards. Users can see a summary in the form of an image, either the film poster or a placeholder image of popcorn; the film's title, the review's slug, the review author's name, the date, and finally a READ button which links to the review_detail page for that particular review. The page has pagination and displays six review cards per page. The pagination links change from red to yellow on hover to show they are interactive elements.<br><br>
 <img src="README%20images/page-browse.png">
 
-### Add review page
+### Add Review page
 
-This page presents a form in which Users can enter their review for submission. The fields include: Film (a dropdown menu which displays the film title and genre), Review content, slug (labelled as Tagline to be more user-friendly), Rating /10 (a dropdown) and finally a Submit button. Upon successful submission, an appropriate message appears.<br><br>
+This page presents a form into which users can enter their review for submission. The fields include: Film (a dropdown menu which displays the film title and genre), Review content, slug (labelled as Tagline to be more user-friendly), Rating /10 (a dropdown) and finally a Submit button. Upon successful submission, an appropriate message appears.<br><br>
 <img src="README%20images/page-submit_review.png">&nbsp;&nbsp;<img src="README%20images/page-submit_review2.png"><br>
 <img src="README%20images/success-message-review-pending-approval.png">
 
 ### Sign Up and Log In pages
 
-These pages both also present simple forms for their respective purposes. Upon successful signup, the homepage is loaded; upon successful login, the My Profile page. Both redirected pages steer the User towards establishing their next options.<br><br>
+These pages both also present simple forms for their respective purposes. Upon successful signup, the homepage is loaded; upon successful login, the My Profile page. In both cases, the page redirections steer the user towards establishing their next options.<br><br>
 <img src="README%20images/page-sign_up.png">&nbsp;&nbsp;<img src="README%20images/page-log_in.png">
 
 ### My Profile page
 
-This page displays all of the registered Users' contributions to the site - all reviews and comments. Each item, except those reviews not yet approved, can be edited and deleted here. The Edit and Delete buttons direct to appropriate pages and Users can confirm deletions before losing their content. Upon successful updates or deletions, relevant messages are displayed.<br><br>
+This page displays all of the registered users' contributions to the site, i.e. all reviews and comments. Each item, except those reviews not yet approved, can be edited and deleted here. The Edit and Delete buttons direct to appropriate pages and users can confirm deletions before losing their content. Upon successful updates or deletions, relevant messages are displayed.<br><br>
 <img src="README%20images/page-my_profile.png"><br>
 <img src="README%20images/page-edit_comment.png"><br>
 <img src="README%20images/page-confirm_delete_review.png"><br>
@@ -194,13 +195,14 @@ Documentation can be found <a href="README%20images/Filmofiles%20testing.pdf">he
 
 ## Security
 
-Django's built-in user authentication system is utilised to handle user registration, login, and profile management. The @login_required decorator ensures that certain views are accessible only to authenticated Users. The submission of forms relies on validated data and error messages are in place for missing or incorrect data. Cross-Site Request Forgery (CSRF) tokens are used on forms throughout this site. The database url and secret key are stored in the env.py file to prevent unwanted connections to the database. Custom Error Pages (400, 403, 404, 500) were created to provide information on any such error and include links to direct the User back to the site.
+Django's built-in user authentication system is utilised to handle user registration, login, and profile management. The @login_required decorator ensures that certain views are accessible only to authenticated users. The submission of forms relies on validated data and error messages are in place for missing or incorrect data. Cross-Site Request Forgery (CSRF) tokens are used on forms throughout this site. The database url and secret key are stored in the env.py file to prevent unwanted connections to the database. Custom Error Pages (400, 403, 404, 500) were created to provide information on any such error and include links to direct the user back to the site.
 
 
 ## Deployment - Heroku
 
 To deploy this page to Heroku from its GitHub repository, the following steps were taken:
-#### In IDE = begin the Setup:
+
+#### In IDE: begin the Setup:
 
 1. SET UP THE DIRECTORY:<br>
 i) Open a new workspace from a repository that uses the full CI template.<br>
@@ -225,19 +227,19 @@ python3 manage.py startapp core (Verify the directory was created.)<br>
 ii) Add this to the list of INSTALLED_APPS in settings.py:<br>
 	'core',
 
+
 #### JUMP to ElephantSQL:
 
-4. Create a database:<br>
-i) ElephantSQL Setup:<br>
-	Create a new instance of PostgreSQL:<br>
-	Set up the plan (name, tiny turtle plan, select region).<br>
-	Verify PostgreSQL version (must be 12 or higher).<br>
-	Copy the URL from the DETAILS section.<br>
+4. CREATE A DATABASE:<br>
+i) Create a new instance of PostgreSQL:<br>
+ii) Set up the plan (name, tiny turtle plan, select region).<br>
+iii) Verify PostgreSQL version (must be 12 or higher).<br>
+iv) Copy the URL from the DETAILS section.<br>
 
 
 #### JUMP back to IDE:
 
-5. SETUP ENVIRONMENT VARIABLES AND SECRET KEY:<br>
+5. SET UP ENVIRONMENT VARIABLES AND SECRET KEY:<br>
 i) Create a file named env.py at the top level of the project.<br>
 ii) Add it to .gitignore.<br>
 iii) Import os and set the secret_key:<br>
@@ -261,9 +263,10 @@ v) And add underneath;<br>
 vi) Comment out the local SQlite3 database and add:<br>
 	DATABASES = {<br>
 	    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))<br>
-	}
+	}<br>
 vii) Migrate database:<br>
 	python3 manage.py migrate<br>
+
 
 #### JUMP to HEROKU:
 
@@ -274,6 +277,7 @@ iii) Add the SECRET_KEY as a config var.<br>
 iv) Add the DATABASE_URL as a config var.<br>
 v) Remove Heroku's PostgreSQL DATABASE_URL if present.<br>
 
+
 #### JUMP back to IDE:
 
 8. UPDATE CODE FOR DEPLOYMENT:<br>
@@ -283,8 +287,9 @@ ii) Add gunicorn==20.1.0 to requirements:<br>
 	pip3 freeze --local > requirements.txt<br>
 iii) Create a Procfile at the project's root and enter on line 1:<br>
 	web: gunicorn filmofiles.wsgi<br>
-iii) In settings.py, set DEBUG=False, then add your Heroku hostname to ALLOWED_HOSTS<br>
-iv) Add, commit and push changes.<br>
+iv) In settings.py, set DEBUG=False, then add your Heroku hostname to ALLOWED_HOSTS<br>
+v) Add, commit and push changes.<br>
+
 
 #### JUMP to HEROKU:
 
@@ -319,7 +324,7 @@ iv) Verify and delete any existing Postgres database add-on to avoid unnecessary
 - [Font Awesome](https://fontawesome.com) - used for icons.
 - [Convertio](https://) - used to convert images to webp files.
 - [Favicon.io](https://favicon.io/favicon-converter/) - used to generate a favicon.
-- Chrome Developer Tools - used for general troubleshooting.
+- [Chrome Developer Tools](https://developer.chrome.com/docs/devtools) - used for general troubleshooting.
 - [ChatGPT](https://chat.openai.com) - used for general troubleshooting.
 - [W3C](https://www.w3.org) - used for CSS code validation.
 
@@ -328,11 +333,11 @@ iv) Verify and delete any existing Postgres database add-on to avoid unnecessary
 
 Code Institute - I Think Therefore I Blog walkthrough project.<br>
 [Python docs](https://docs.python.org/3/library/re.html) - for import re (used to check for numbers, uppercase and lowercase letters, and special characters in passwords).<br>
-[Django docs](https://docs.djangoproject.com/en/3.2/_modules/django/forms/widgets/) - for info on django forms (widgets).
+[Django docs](https://docs.djangoproject.com/en/3.2/_modules/django/forms/widgets/) - for info on Django forms (widgets).
 
 #### Images:
-[Pixabay](https://pixabay.com/de/users/onkelglocke-12931647/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4609877) - for cinema background image.<br>
-[Pixabay](https://pixabay.com/de/users/agoss-432408/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=898154) - for popcorn placeholder image.
+[Pixabay](https://pixabay.com/de/users/onkelglocke-12931647/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4609877) - for the cinema background image.<br>
+[Pixabay](https://pixabay.com/de/users/agoss-432408/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=898154) - for the popcorn placeholder image.
 
 
 ## Acknowledgments
